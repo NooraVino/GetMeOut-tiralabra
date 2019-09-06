@@ -1,4 +1,4 @@
-# 1. Määrittelydokumentti
+### 1. Määrittelydokumentti
 
 Harjoitustyönä vertailen miten Dikstra ja A* eroavat toisistaan kun algoritmin on tarkoitus löytää
 lyhin reitti labyrintista ulos. Työssä tarkastelen mm sitä miten labyrintin koko vaikuttaa tulokseen
@@ -21,7 +21,6 @@ on monotoninen.
 
 Sekä Dijkstran että A*:n toivottu aikavaativuus O((|E|+|V|) log|V|) tilavaativuus O(|V|).
 
-### Lähteet:
+##### Lähteet:
 Tietorakenteet ja Algoritmit luentomoniste 2017 (Jyrki Kivinen)
-
- A*-reitinhaku -Tietorakenteiden harjoitustyö (www.harbu.org/uploads/tiralabra/)
+A*-reitinhaku -Tietorakenteiden harjoitustyö (www.harbu.org/uploads/tiralabra/)
