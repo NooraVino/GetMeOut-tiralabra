@@ -1,19 +1,19 @@
 ### 1. Määrittelydokumentti
 
 Harjoitustyönä vertailen miten Dikstra ja A* eroavat toisistaan kun algoritmin on tarkoitus löytää
-lyhin reitti labyrintista ulos. Työssä tarkastelen mm sitä miten labyrintin koko vaikuttaa tulokseen
-tai onko esimerkiksi lähtö ja maalipisteiden etäisyydellä tai esteillä labyrintissa merkitystä.
+lyhin reitti kartalla kahden pisteen välillä. Työssä tarkastelen mm sitä miten kartan koko vaikuttaa tulokseen
+tai onko esimerkiksi lähtö ja maalipisteiden etäisyydellä tai esteillä merkitystä.
 
-Ohjelma saa syötteenä labyrintin 2-ulotteisena taulukkona, jossa 1 merkitsee seinätöntä kohtaa ja 0
-seinää. Labyrintti ajatellaan verkkona ja ruudut ovat verkon solmuja. Yhdellä solmulla voi olla
-neljä vierussolmua, labyrintissa ei siis voi liikkua viistosti.
+Ohjelma saa syötteenä kartan 2-ulotteisena taulukkona, jossa 1 merkitsee seinätöntä kohtaa ja 0
+seinää. Kartta ajatellaan verkkona ja ruudut ovat verkon solmuja. Yhdellä solmulla voi olla
+neljä vierussolmua.
 
 Dijkstra löytää lyhimmät polut annetusta lähtösolmusta kaikkiin verkon solmuihin. Dijkstra käyttää
 aputietorakenteena minimikekoa. Mukaan tarvitaan aputaulukot (etäisyys ja polku), sekä
 aliohjelmat kaarten löysäämiseksi (päivitys ja alustus).
 
 A* tarvitsee minimikeon lisäksi avukseen heuristiikkafunktion joka tässä tapauksessa voi olla ns
-Manhattanetäisyys sillä liike labyrintissa tapahtuu vain neljään (ei kahdeksaan suuntaan). A* voi
+Manhattanetäisyys sillä liike tapahtuu vain neljään (ei kahdeksaan suuntaan). A* voi
 heuristiikkafunktion avulla löytää lyhimmän reitin nopeammin kuin Dijkstra mutta huomioitavaa on
 että algoritmi löytää varmasti lyhimmän polun jvain os loppuosan etäisyysarvio ei ole millekään
 solmulle suurempi kuin solmun todellinen etäisyys maalisolmusta ja heuristiikkafunktio
