@@ -29,4 +29,6 @@ miettimään kokonaisrakennetta.
 Ratkaisussani tulen hyödyntämään Moving AI Labin valmiita kaksiulotteisia karttapohjia.
 Hain ohjeet JUnit testien tekoa varten ja kokeilin tehdä muutaman alustavan testin. Kävin läpi myös Chechstylen tekemistä, mutta en ehtinyt sitä vielä toteuttaa. 
 
+Työtunteja yhteensä noin 12.
+
 
