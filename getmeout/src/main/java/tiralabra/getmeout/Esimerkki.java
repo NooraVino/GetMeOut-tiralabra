@@ -17,7 +17,7 @@ import java.io.File;
     
     public static void main(String[] args) {
      
-       Labyrintti labyrintti = new Labyrintti();
+       Alustus labyrintti = new Alustus();
        
         labyrintti.lue();
         labyrintti.alusta(); 

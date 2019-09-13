@@ -13,13 +13,13 @@ import java.util.Scanner;
  *
  * @author vino
  */
-public class Labyrintti {
+public class Alustus {
 
     private int[][] taulukko;
     private Solmu[] keko;
     public ArrayList<String> rivit;
 
-    public Labyrintti() {
+    public Alustus() {
         this.taulukko = new int[5][5];
         this.rivit = new ArrayList<>();
         this.keko = new Solmu[25];
