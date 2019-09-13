@@ -1,4 +1,4 @@
-Viikkoraportti 1
+### Viikkoraportti 1
 
 Ensimmäisellä viikolla olen päättänyt ohjelmointityöni aiheen ja käyttänyt aikaa etsien
 tietoa aiheeseeni liittyen. Olen lueskellut aiempia Tiran harjoitustöitä sekä etsinyt tietoa
@@ -11,10 +11,13 @@ Labtooliin. Ensimmäisellä viikolla aikaa on vienyt myös kurssimateriaaliin pe
 
 Seuraavaksi aloitan luomaan projektille runkoa ja sen jälkeen teen Labyrintit joita ohjelma
 voi käyttää.
-Ajankäyttö:
-● aiheen valinta ja tiedon hankinta 2 1/2h + 2h(vähemmän aktiivista selailua)
-● määrittelydokumentti 1h
-● viikkoraportti 1h
-● Netbeans projektin luominen 1h
-● kurssimateriaalin läpikäyminen 1/2h
-yhteensä 8h
+
+#### Ajankäyttö:
+
+* aiheen valinta ja tiedon hankinta 2 1/2h + 2h(vähemmän aktiivista selailua
+* määrittelydokumentti 1h
+* viikkoraportti 1h
+* Netbeans projektin luominen 1h
+* kurssimateriaalin läpikäyminen 1/2h
+
+##### yhteensä 8h
