@@ -12,7 +12,7 @@ jokaisesta taulukon alkiosta Solmu.
 * etäisyys naapureihin
 * edellinen solmu lyhimällä reitillä
 #### Minimikeko
-*taulukon koko
+* taulukon koko
 * keko(heapsize) koko
 * parent, left ja right
 * heap insert
