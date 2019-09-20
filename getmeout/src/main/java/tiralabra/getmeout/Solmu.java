@@ -10,62 +10,69 @@ package tiralabra.getmeout;
  * @author vino
  */
 public class Solmu {
+
     private int x;
     private int y;
     private boolean kuljettava;
     private int distance;
     private Solmu edeltaja;
     private int paikka;
-    
+
     public Solmu(int x, int y) {
         this.x = x;
-        this.y = y; 
+        this.y = y;
         this.kuljettava = false;
-        this.distance = 0; /*pitäisi kai olla ääretön*/
         this.edeltaja = null;
         this.paikka = 0;
     }
-    public int getX(){
+
+    public int getX() {
         return this.x;
     }
+
     public int getY() {
         return this.y;
     }
+
     public boolean getKuljettava() {
         return this.kuljettava;
     }
+
     public void setKuljettava() {
         this.kuljettava = true;
     }
-    
+
     /**
-    * asetetaan solmun etäisyysarvio lähtösolmusta.
-    */
-    public void setEtaisyys(int d) { 
+     * asetetaan solmun etäisyysarvio lähtösolmusta.
+     */
+    public void setEtaisyys(int d) {
         this.distance = d;
     }
-    
-    public int getEtaisyys(){
+
+    public int getEtaisyys() {
         return this.distance;
-    } 
+    }
+
     /**
      * asetetaan edeltävä solmu toistaiseksi lyhyimmällä polulla.
+     *
      * @param edeltaja Edeltävä solmu.
      */
-    public void setPolku(Solmu edeltaja) { 
-       this.edeltaja = edeltaja;  
+    public void setPolku(Solmu edeltaja) {
+        this.edeltaja = edeltaja;
     }
-    
+
     public Solmu getPolku() {
         return this.edeltaja;
     }
+
     public int getPaikkaKeossa() {
         return paikka;
-        
+
     }
+
     public void setPaikkaKeossa(int paikka) {
         this.paikka = paikka;
     }
-    
-    
+
 }

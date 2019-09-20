@@ -16,9 +16,9 @@ public class Keko {
     private int top;
 
     public Keko() {
-        this.keko = new Solmu[30];
+        this.keko = new Solmu[20];
         this.heapSize = 1000;
-        this.top=0;
+        this.top = 0;
     }
 
     public int vanhempi(int i) {
@@ -40,14 +40,26 @@ public class Keko {
     public int getHeapSize() {
         return this.heapSize;
     }
-    
+
     public void lisaaSolmu(Solmu uusiSolmu) {
-        keko[top]=uusiSolmu; 
+        keko[top] = uusiSolmu;
         uusiSolmu.setPaikkaKeossa(top);
         top++;
-        
+
     }
-    
+
+    public Solmu PoistaMinimi() {
+        if (top == 0) {
+            return null;
+        }
+        Solmu minimi = keko[1];
+        top--;
+        keko[1] = keko[top];
+
+        //heapify(1);
+        return minimi;
+    }
+
     public void tulostaKeko() {
         for (int i = 0; i < keko.length; i++) {
             Solmu s = keko[i];

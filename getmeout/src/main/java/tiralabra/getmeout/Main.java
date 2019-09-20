@@ -5,24 +5,19 @@
  */
 package tiralabra.getmeout;
 
-import java.util.Scanner;
-import java.io.File;
-
-
 /**
  *
  * @author vino
  */
-    public class Esimerkki {
-    
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         Dijkstra dijkstra = new Dijkstra();
         Keko DijkstraAlustettu = dijkstra.alustatiedostosta();
-     
-       
-       
-        
-        
-        
+
     }
-    }
+
+}
