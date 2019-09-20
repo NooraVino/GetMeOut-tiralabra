@@ -9,14 +9,16 @@ package tiralabra.getmeout;
  *
  * @author vino
  */
-public class MinimiKeko {
+public class Keko {
 
     private Solmu[] keko;
     private int heapSize;
+    private int top;
 
-    public MinimiKeko() {
-        this.keko = new Solmu[0];
-        this.heapSize = 0;
+    public Keko() {
+        this.keko = new Solmu[30];
+        this.heapSize = 1000;
+        this.top=0;
     }
 
     public int vanhempi(int i) {
@@ -37,6 +39,23 @@ public class MinimiKeko {
 
     public int getHeapSize() {
         return this.heapSize;
+    }
+    
+    public void lisaaSolmu(Solmu uusiSolmu) {
+        keko[top]=uusiSolmu; 
+        uusiSolmu.setPaikkaKeossa(top);
+        top++;
+        
+    }
+    
+    public void tulostaKeko() {
+        for (int i = 0; i < keko.length; i++) {
+            Solmu s = keko[i];
+            System.out.println(s.getKuljettava());
+            System.out.println(s.getY());
+            System.out.println(s.getX());
+
+        }
     }
 
 }

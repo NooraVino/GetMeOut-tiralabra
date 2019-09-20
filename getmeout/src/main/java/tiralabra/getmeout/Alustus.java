@@ -26,49 +26,8 @@ public class Alustus {
 
     }
 
-    public void lue() {
+   
 
-        try (Scanner lukija = new Scanner(new File("labyrinth.txt"))) {
-            while (lukija.hasNextLine()) {
-                rivit.add(lukija.nextLine());
-            }
-        } catch (Exception e) {
-            System.out.println("Virhe: " + e.getMessage());
-        }
-    }
-
-    public void alusta() {
-        int a = 0;
-        for (int i = 0; i < rivit.size(); i++) {
-            String rivi = rivit.get(i);
-
-            for (int j = 0; j < rivi.length(); j++) {
-                taulukko[i][j] = Integer.valueOf(rivi.charAt(j));
-                char y = rivi.charAt(j);
-                Solmu solmu = new Solmu(i, j);
-                this.keko[a] = solmu;
-                a++;
-                /**
-                 * alustetaan solmun etäisyysarvio nollaksi.
-                 */
-                solmu.setEtaisyys(0);
-                
-                if (y == '1') {
-
-                    solmu.setKuljettava();
-                }
-
-            }
-        }
-
-    }
-
-    public void tulostaKeko() {
-        for (int i = 0; i < keko.length; i++) {
-            Solmu s = keko[i];
-            System.out.println(s.getKuljettava());
-
-        }
-    }
+    
 
 }

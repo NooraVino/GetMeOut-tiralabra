@@ -16,12 +16,11 @@ import java.io.File;
     public class Esimerkki {
     
     public static void main(String[] args) {
+        Dijkstra dijkstra = new Dijkstra();
+        Keko DijkstraAlustettu = dijkstra.alustatiedostosta();
      
-       Alustus labyrintti = new Alustus();
        
-        labyrintti.lue();
-        labyrintti.alusta(); 
-        labyrintti.tulostaKeko();
+       
         
         
         

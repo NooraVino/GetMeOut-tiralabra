@@ -15,6 +15,7 @@ public class Solmu {
     private boolean kuljettava;
     private int distance;
     private Solmu edeltaja;
+    private int paikka;
     
     public Solmu(int x, int y) {
         this.x = x;
@@ -22,6 +23,7 @@ public class Solmu {
         this.kuljettava = false;
         this.distance = 0; /*pitäisi kai olla ääretön*/
         this.edeltaja = null;
+        this.paikka = 0;
     }
     public int getX(){
         return this.x;
@@ -56,6 +58,13 @@ public class Solmu {
     
     public Solmu getPolku() {
         return this.edeltaja;
+    }
+    public int getPaikkaKeossa() {
+        return paikka;
+        
+    }
+    public void setPaikkaKeossa(int paikka) {
+        this.paikka = paikka;
     }
     
     
