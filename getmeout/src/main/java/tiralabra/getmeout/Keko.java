@@ -43,8 +43,31 @@ public class Keko {
 
     public void lisaaSolmu(Solmu uusiSolmu) {
         keko[top] = uusiSolmu;
+        
+        Solmu vertailtavalapsi = keko[top];
+        Solmu vertailtavaParent = keko[top/2];
+        
         uusiSolmu.setPaikkaKeossa(top);
-        top++;
+        
+         while ((vertailtavalapsi.getEtaisyys()) < (vertailtavaParent.getEtaisyys()) && (vertailtavaParent.getPaikkaKeossa()) > 1) {
+                    swap(vertailtavalapsi.getPaikkaKeossa(), vertailtavaParent.getPaikkaKeossa());
+                    int uusiVanhempi = ((vertailtavalapsi.getPaikkaKeossa()) / 2);
+                    vertailtavaParent = keko[uusiVanhempi];
+                }
+               
+                this.top++;
+
+    }
+    
+    public void swap(int solmu, int lapsi) {
+        Solmu valiaikainenLapsi = keko[lapsi];
+        Solmu valiaikainenSolmu = keko[solmu];
+
+        valiaikainenLapsi.setPaikkaKeossa(solmu); 
+        valiaikainenSolmu.setPaikkaKeossa(lapsi);
+
+        keko[lapsi] = valiaikainenSolmu;
+        keko[solmu] = valiaikainenLapsi;
 
     }
 
@@ -63,7 +86,7 @@ public class Keko {
     public void tulostaKeko() {
         for (int i = 0; i < keko.length; i++) {
             Solmu s = keko[i];
-            System.out.println(s.getKuljettava());
+            System.out.println(s.getPaikkaKeossa());
             System.out.println(s.getY());
             System.out.println(s.getX());
 

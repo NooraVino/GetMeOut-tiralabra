@@ -53,6 +53,7 @@ public class Dijkstra {
 
         DijkstraKeko.tulostaKeko();
         DijkstraKeko.PoistaMinimi();
+       
         DijkstraKeko.tulostaKeko();
 
         return DijkstraKeko;
