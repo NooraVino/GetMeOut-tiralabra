@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra.getmeout;
+package tiralabra.getmeout.Tietorakenteet;
+
+import tiralabra.getmeout.Solmu;
 
 /**
  *
@@ -79,16 +81,52 @@ public class Keko {
         top--;
         keko[1] = keko[top];
 
-        //heapify(1);
+        heapify(1);
+      
         return minimi;
+    }
+    
+    public void heapify(int indeksi) {
+
+        if ((indeksi * 2 + 1) < top) {
+         
+            int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
+            int oikeankoko = (keko[(indeksi * 2 + 1)]).getEtaisyys();
+            int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
+
+
+            if (tarkistettavasolmu > (Math.min(vasemmankoko, oikeankoko))) {
+                
+                if (vasemmankoko<oikeankoko) {
+                    swap(indeksi, (indeksi*2));
+                    heapify((indeksi*2));
+                }          
+                
+                else {
+                swap(indeksi, (indeksi*2+1));
+                heapify(indeksi*2+1);
+                }
+               
+            }
+
+        } else if ((indeksi * 2) < top) {
+            int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
+            int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
+            if (tarkistettavasolmu > vasemmankoko) {
+                
+                swap(indeksi, (indeksi*2));
+           }
+
+        }
+
     }
 
     public void tulostaKeko() {
         for (int i = 0; i < keko.length; i++) {
             Solmu s = keko[i];
             System.out.println(s.getPaikkaKeossa());
-            System.out.println(s.getY());
-            System.out.println(s.getX());
+            //System.out.println(s.getY());
+            //System.out.println(s.getX());
 
         }
     }

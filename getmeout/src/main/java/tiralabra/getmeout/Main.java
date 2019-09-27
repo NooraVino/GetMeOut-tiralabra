@@ -5,6 +5,9 @@
  */
 package tiralabra.getmeout;
 
+import tiralabra.getmeout.Tietorakenteet.Keko;
+import tiralabra.getmeout.Algoritmit.Dijkstra;
+
 /**
  *
  * @author vino
