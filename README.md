@@ -4,6 +4,8 @@ Kurssin tarkoituksena on harjoitella soveltamaan Tietorakenteet ja Algoritmit ku
 
 The main point of this course is to try those things we learn in course Datastructures and algorithms in practise. My subject is graphs and pathfinding. How to find shortest paht. I use two different algorihms; A-star and Dijkstra. 
 
+[viikkoraportti 4](https://github.com/NooraVino/GetMeOut-tiralabra/blob/master/dokumentaatio/viikkoraportti4.md)
+
 [viikkoraportti 3](https://github.com/NooraVino/GetMeOut-tiralabra/blob/master/dokumentaatio/viikkoraportti3.md)
 
 [viikkoraportti 2](https://github.com/NooraVino/GetMeOut-tiralabra/blob/master/dokumentaatio/viikkoraportti2.md)
