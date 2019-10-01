@@ -1,3 +1,3 @@
-Tällä viikolla tein keko-rakenteen loppuun ja seuraavaksi pääsen aloittamaan Dijkstran toteutusta. Sitä vielä mietein, että miten pidetään kirjaa siitä, missä solmussa ollaan menossa, että pitääkö olla jokin oma lista-rakenne toteutettuna..en ihan ymmärrä. 
+Tällä viikolla tein keko-rakenteen loppuun ja seuraavaksi pääsen aloittamaan Dijkstran toteutusta. Eli siitä kohdasta jossa minimi poistetaan keosta ja vierustyyppien arvot päivitetään.  Sitä vielä mietin, että miten pidetään kirjaa siitä, missä solmussa ollaan menossa, että pitääkö olla jokin oma lista-rakenne toteutettuna..en ihan ymmärrä. Ja myös se vähän epäselvää, että missä kohtaa se path-tieto on järkevää tallentaa?
 
 Muokkasin myös kansiorakennetta. En ole varma onko tämä se tapa mitä tarkoitit tai että missä kohtaa se ongelma tulee, että mikä kaikki pitää olla erikseen ja mikä saa olla samassa. 
