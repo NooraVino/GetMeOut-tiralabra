@@ -16,10 +16,11 @@ import tiralabra.getmeout.Solmu;
  * @author vino
  */
 public class Dijkstra {
-
+   private Solmu maali;
     Keko DijkstraKeko;
 
     public void Dijkstra() {
+        Solmu maali = new Solmu (2,4);
 
     }
 
@@ -37,12 +38,18 @@ public class Dijkstra {
         }
 
         int a = 0;
-        for (int i = 0; i < rivit.size(); i++) {
-            String rivi = rivit.get(i);
+        for (int y = 0; y < rivit.size(); y++) {
+            String rivi = rivit.get(y);
 
-            for (int j = 0; j < rivi.length(); j++) {
-                char arvo = rivi.charAt(j);
-                Solmu solmu = new Solmu(j, i);
+            for (int x = 0; x < rivi.length(); x++) {
+                char arvo = rivi.charAt(x);
+                Solmu solmu = new Solmu(x, y);
+                solmu.setNaapurit(x,y);
+                System.out.print(solmu.getX());
+                System.out.print(solmu.getY() + "   ");
+                System.out.print(solmu.getNaapuriOikea().getX());
+                System.out.println(solmu.getNaapuriOikea().getY());
+              
                 a++;
 
                 solmu.setEtaisyys(Integer.MAX_VALUE);
@@ -52,13 +59,32 @@ public class Dijkstra {
                 DijkstraKeko.lisaaSolmu(solmu);
             }
         }
-
-    
-       
+        
+     
         DijkstraKeko.tulostaKeko();
-
+       
+       
         return DijkstraKeko;
 
     }
+     public void laskeReitti() {
+         
+         
+         while (DijkstraKeko.getHeapSize() > 0) {
+         Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
+         
+         
+         if (kasiteltava.getX() == maali.getX() && kasiteltava.getY() == maali.getY()) {
+            //tulostaReitti();
+            return;
+         
+         }
+         
+         }
+         
+         
+         
+            
+                 }
 
 }

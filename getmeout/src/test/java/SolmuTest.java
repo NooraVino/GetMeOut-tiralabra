@@ -59,4 +59,29 @@ public class SolmuTest {
          
          
      }
+     
+     @Test
+     public void OikeaNaapuriOikein() {
+         int x = 1;
+         int y = 2;
+         Solmu solmu = new Solmu(x,y);
+         solmu.setNaapurit(x,y);
+         int naapuriX = solmu.getNaapuriOikea().getX();
+         int naapuriY = solmu.getNaapuriOikea().getY();
+         
+         assertEquals(2==naapuriX, 2==naapuriY);
+           
+     }
+     @Test
+     public void AlaNaapuriOikein() {
+         int x = 1;
+         int y = 2;
+         Solmu solmu = new Solmu(x,y);
+         solmu.setNaapurit(x,y);
+         int naapuriX = solmu.getNaapuriAla().getX();
+         int naapuriY = solmu.getNaapuriAla().getY();
+         
+         assertEquals(1==naapuriX, 3==naapuriY);
+           
+     }
 }

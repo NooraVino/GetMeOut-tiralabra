@@ -19,7 +19,7 @@ public class Keko {
 
     public Keko() {
         this.keko = new Solmu[20];
-        this.heapSize = 1000;
+        this.heapSize = this.keko.length;
         this.top = 0;
     }
 
@@ -33,10 +33,6 @@ public class Keko {
 
     public int oikea(int i) {
         return (2 * i + 1);
-    }
-
-    public int getSize() {
-        return this.keko.length;
     }
 
     public int getHeapSize() {
@@ -77,11 +73,14 @@ public class Keko {
         if (top == 0) {
             return null;
         }
-        Solmu minimi = keko[1];
+        Solmu minimi = keko[0];
+        
+        heapSize--;
         top--;
-        keko[1] = keko[top];
+        keko[0] = keko[top];
+        
 
-        heapify(1);
+        heapify(0);
       
         return minimi;
     }
@@ -122,11 +121,11 @@ public class Keko {
     }
 
     public void tulostaKeko() {
-        for (int i = 0; i < keko.length; i++) {
+        for (int i = 0; i < getHeapSize(); i++) {
             Solmu s = keko[i];
-            System.out.println(s.getPaikkaKeossa());
-            //System.out.println(s.getY());
-            //System.out.println(s.getX());
+            //System.out.println(s.getPaikkaKeossa());
+            System.out.print(s.getY());
+            System.out.println(s.getX());
 
         }
     }
