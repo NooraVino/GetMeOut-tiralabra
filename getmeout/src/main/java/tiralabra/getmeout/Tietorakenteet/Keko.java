@@ -123,7 +123,7 @@ public class Keko {
     public void tulostaKeko() {
         for (int i = 0; i < getHeapSize(); i++) {
             Solmu s = keko[i];
-            //System.out.println(s.getPaikkaKeossa());
+            System.out.print(s.getKuljettava());
             System.out.print(s.getY());
             System.out.println(s.getX());
 

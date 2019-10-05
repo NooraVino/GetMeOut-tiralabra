@@ -73,15 +73,16 @@ public class SolmuTest {
            
      }
      @Test
-     public void AlaNaapuriOikein() {
-         int x = 1;
+     public void PalauttaaYlaNaapurinVainJosTaulukossa() {
+         int x = 3;
          int y = 2;
          Solmu solmu = new Solmu(x,y);
          solmu.setNaapurit(x,y);
-         int naapuriX = solmu.getNaapuriAla().getX();
-         int naapuriY = solmu.getNaapuriAla().getY();
+         Solmu naapuri = solmu.getNaapuriYla();
          
-         assertEquals(1==naapuriX, 3==naapuriY);
+         assertEquals(naapuri, null);
            
      }
+     
+     
 }

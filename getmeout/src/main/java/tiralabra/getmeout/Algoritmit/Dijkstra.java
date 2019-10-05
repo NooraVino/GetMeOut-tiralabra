@@ -16,15 +16,17 @@ import tiralabra.getmeout.Solmu;
  * @author vino
  */
 public class Dijkstra {
-   private Solmu maali;
+
+    public Solmu maali;
     Keko DijkstraKeko;
+    Solmu[] solmut;
 
     public void Dijkstra() {
-        Solmu maali = new Solmu (2,4);
 
     }
 
     public Keko alustatiedostosta() {
+        this.solmut = new Solmu[25];
         DijkstraKeko = new Keko();
         ArrayList<String> rivit = new ArrayList<>();
 
@@ -36,7 +38,7 @@ public class Dijkstra {
             System.out.println("Virhe: " + e.getMessage());
 
         }
-
+        DijkstraKeko.lisaaSolmu(new Solmu(0, 0));
         int a = 0;
         for (int y = 0; y < rivit.size(); y++) {
             String rivi = rivit.get(y);
@@ -44,47 +46,45 @@ public class Dijkstra {
             for (int x = 0; x < rivi.length(); x++) {
                 char arvo = rivi.charAt(x);
                 Solmu solmu = new Solmu(x, y);
-                solmu.setNaapurit(x,y);
-                System.out.print(solmu.getX());
-                System.out.print(solmu.getY() + "   ");
-                System.out.print(solmu.getNaapuriOikea().getX());
-                System.out.println(solmu.getNaapuriOikea().getY());
-              
-                a++;
 
+                solmu.setNaapurit(x, y);
                 solmu.setEtaisyys(Integer.MAX_VALUE);
+
                 if (arvo == '1') {
                     solmu.setKuljettava();
                 }
-                DijkstraKeko.lisaaSolmu(solmu);
+
+                solmut[a] = solmu;
+                a++;
             }
+
         }
-        
-     
-        DijkstraKeko.tulostaKeko();
-       
-       
+
         return DijkstraKeko;
 
     }
-     public void laskeReitti() {
-         
-         
-         while (DijkstraKeko.getHeapSize() > 0) {
-         Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
-         
-         
-         if (kasiteltava.getX() == maali.getX() && kasiteltava.getY() == maali.getY()) {
-            //tulostaReitti();
-            return;
-         
-         }
-         
-         }
-         
-         
-         
-            
-                 }
+
+    public void laskeReitti() {
+        Solmu maali = new Solmu(2, 3);
+
+        while (DijkstraKeko.getHeapSize() > 0) {
+            Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
+
+            if (kasiteltava.getX() == maali.getX() && kasiteltava.getY() == maali.getY()) {
+                //tulostaReitti();
+                return;
+
+            }
+
+            Solmu ylaNaapuri = kasiteltava.getNaapuriYla();
+            if (ylaNaapuri != null && ylaNaapuri.getKuljettava()) {
+                ylaNaapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
+                ylaNaapuri.setEdeltaja(kasiteltava);
+            }
+            //tämä toistetaan kaikille naapureille, ala, vasen oikea ja sen jälkeen lisätään solmut kekoon.
+
+        }
+
+    }
 
 }
