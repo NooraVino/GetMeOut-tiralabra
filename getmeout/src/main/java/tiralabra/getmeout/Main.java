@@ -21,6 +21,7 @@ public class Main {
         Dijkstra dijkstra = new Dijkstra();
         Keko DijkstraAlustettu = dijkstra.alustatiedostosta();
         dijkstra.laskeReitti();
+        //dijkstra.tulostaReitti();
       
     }
 

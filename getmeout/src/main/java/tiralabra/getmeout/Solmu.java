@@ -21,7 +21,7 @@ public class Solmu {
     private Solmu naapuriVasen;
     private Solmu naapuriOikea;
     private int paikka;
-   
+    private boolean maali;
 
     public Solmu(int x, int y) {
         this.x = x;
@@ -29,29 +29,22 @@ public class Solmu {
         this.kuljettava = false;
         this.edeltaja = null;
         this.paikka = 0;
-      
+        this.maali = false;
+
     }
 
     public void setNaapurit(int x, int y) {
-       
-            this.naapuriYla = new Solmu(x, y - 1);
-            this.naapuriAla = new Solmu(x, y + 1);
-            this.naapuriVasen = new Solmu((x - 1), y);
-            this.naapuriOikea = new Solmu((x + 1), y);
-        
+
+        this.naapuriYla = new Solmu(x, y - 1);
+        this.naapuriAla = new Solmu(x, y + 1);
+        this.naapuriVasen = new Solmu((x - 1), y);
+        this.naapuriOikea = new Solmu((x + 1), y);
 
     }
 
     public Solmu getNaapuriYla() {
-        if (this.naapuriYla.getY() < 0) {
-            return null;
-        }
-        else {
-            return this.naapuriYla;
-        }
+        return this.naapuriYla;
     }
-    
-
 
     public Solmu getNaapuriVasen() {
         return this.naapuriVasen;
@@ -88,10 +81,8 @@ public class Solmu {
     /**
      * asetetaan solmun etäisyysarvio lähtösolmusta.
      */
-   
-    
     public void setEtaisyys(int i) {
-      this.distance = i;
+        this.distance = i;
     }
 
     public int getEtaisyys() {
@@ -110,6 +101,13 @@ public class Solmu {
     public Solmu getEdeltaja() {
         return this.edeltaja;
     }
+    
+    public void setMaali() {
+        this.maali = true;
+    }
+    public boolean getMaali() {
+        return this.maali;
+    }
 
     public int getPaikkaKeossa() {
         return paikka;
@@ -118,5 +116,7 @@ public class Solmu {
     public void setPaikkaKeossa(int paikka) {
         this.paikka = paikka;
     }
+    
+   
 
 }

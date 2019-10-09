@@ -19,14 +19,19 @@ public class Dijkstra {
 
     public Solmu maali;
     Keko DijkstraKeko;
-    Solmu[] solmut;
+    Solmu[][] solmut;
+    public int korkeus;
+    public int leveys;
+    public Solmu [] polku;
 
     public void Dijkstra() {
+        this.korkeus = 0;
+        this.leveys = 0;
 
     }
 
     public Keko alustatiedostosta() {
-        this.solmut = new Solmu[25];
+        this.solmut = new Solmu[25][25];
         DijkstraKeko = new Keko();
         ArrayList<String> rivit = new ArrayList<>();
 
@@ -38,8 +43,7 @@ public class Dijkstra {
             System.out.println("Virhe: " + e.getMessage());
 
         }
-        DijkstraKeko.lisaaSolmu(new Solmu(0, 0));
-        int a = 0;
+
         for (int y = 0; y < rivit.size(); y++) {
             String rivi = rivit.get(y);
 
@@ -53,37 +57,92 @@ public class Dijkstra {
                 if (arvo == '1') {
                     solmu.setKuljettava();
                 }
+                /**
+                 * Aloitussolmun lisääminen kekoon
+                 */
+                if (arvo == '2') {
+                    solmu.setEtaisyys(0);
+                     DijkstraKeko.lisaaSolmu(solmu);
+                }
+                
+                if (arvo == '3') {
+                    solmu.setMaali();
+                }
+                
+                this.korkeus = y;
+                this.leveys = x;
+                solmut[y][x] = solmu;
 
-                solmut[a] = solmu;
-                a++;
             }
 
         }
+       
 
         return DijkstraKeko;
 
     }
 
     public void laskeReitti() {
-        Solmu maali = new Solmu(2, 3);
-
+        //Solmu maali = new Solmu(3, 3);
+        
         while (DijkstraKeko.getHeapSize() > 0) {
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
+            System.out.println("käsiteltävä: " + kasiteltava);
+            
+            if (kasiteltava.getNaapuriYla().getY() >= 0) {
+                Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
+                System.out.println("ylaNaapuri: " + ylaNaapuri.getKuljettava() + ylaNaapuri.getY() + ylaNaapuri.getX());
+                updateSolmu(kasiteltava, ylaNaapuri);
+            }
+            
+            if (kasiteltava.getNaapuriAla().getY() <= this.korkeus) {
 
-            if (kasiteltava.getX() == maali.getX() && kasiteltava.getY() == maali.getY()) {
-                //tulostaReitti();
-                return;
-
+                Solmu alaNaapuri = solmut[kasiteltava.getNaapuriAla().getY()][kasiteltava.getNaapuriAla().getX()];
+                System.out.println("alaNaapuri: " + alaNaapuri.getKuljettava() + alaNaapuri.getY() + alaNaapuri.getX());
+                updateSolmu(kasiteltava, alaNaapuri);
             }
 
-            Solmu ylaNaapuri = kasiteltava.getNaapuriYla();
-            if (ylaNaapuri != null && ylaNaapuri.getKuljettava()) {
-                ylaNaapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
-                ylaNaapuri.setEdeltaja(kasiteltava);
+            if (kasiteltava.getNaapuriVasen().getX() >= 0) {
+                Solmu VasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
+                System.out.println("VasenNaapuri: " + VasenNaapuri.getKuljettava() + VasenNaapuri.getY() + VasenNaapuri.getX());
+                updateSolmu(kasiteltava, VasenNaapuri);
             }
-            //tämä toistetaan kaikille naapureille, ala, vasen oikea ja sen jälkeen lisätään solmut kekoon.
+            if (kasiteltava.getNaapuriOikea().getX() <= this.leveys) {
+
+                Solmu OikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
+                System.out.println("OikeaNaapuri: " + OikeaNaapuri.getKuljettava() + OikeaNaapuri.getY() + OikeaNaapuri.getX());
+                if (OikeaNaapuri != null && OikeaNaapuri.getKuljettava()) {
+                    OikeaNaapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
+                    OikeaNaapuri.setEdeltaja(kasiteltava);
+                    if (!DijkstraKeko.contains(OikeaNaapuri)) {
+                        DijkstraKeko.lisaaSolmu(OikeaNaapuri);
+                    }
+                }
+            }
+            if (kasiteltava.getMaali()) {
+                tulostaReitti();
+                break;
+
+            }
 
         }
+    }
+    
+    public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
+        if (naapuri != null && naapuri.getKuljettava()) {
+                    naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
+                    naapuri.setEdeltaja(kasiteltava);
+                    if (!DijkstraKeko.contains(naapuri)) {
+                        DijkstraKeko.lisaaSolmu(naapuri);
+                    }
+                }
+        
+        
+    }
+
+    public void tulostaReitti() {
+        System.out.println(solmut[2][0].getEdeltaja().getY());
+        System.out.println(solmut[2][0].getEdeltaja().getX());
 
     }
 

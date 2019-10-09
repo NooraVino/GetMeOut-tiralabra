@@ -18,7 +18,7 @@ public class Keko {
     private int top;
 
     public Keko() {
-        this.keko = new Solmu[20];
+        this.keko = new Solmu[28];
         this.heapSize = this.keko.length;
         this.top = 0;
     }
@@ -38,6 +38,16 @@ public class Keko {
     public int getHeapSize() {
         return this.heapSize;
     }
+    
+     public boolean contains(Solmu n){
+        for(int i=0;i<this.heapSize;i++){
+            if(keko[i]== n){
+                return true;
+            }
+        }
+        return false;
+        
+    }
 
     public void lisaaSolmu(Solmu uusiSolmu) {
         keko[top] = uusiSolmu;
@@ -54,6 +64,7 @@ public class Keko {
                 }
                
                 this.top++;
+                //this.heapSize++;
 
     }
     
