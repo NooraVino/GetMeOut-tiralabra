@@ -18,22 +18,11 @@ public class Keko {
     private int top;
 
     public Keko() {
-        this.keko = new Solmu[28];
-        this.heapSize = this.keko.length;
+        this.keko = new Solmu[10];
+        this.heapSize = 10;
         this.top = 0;
     }
 
-    public int vanhempi(int i) {
-        return (i - 1) / 2;
-    }
-
-    public int vasen(int i) {
-        return (2 * i);
-    }
-
-    public int oikea(int i) {
-        return (2 * i + 1);
-    }
 
     public int getHeapSize() {
         return this.top;
@@ -58,6 +47,20 @@ public class Keko {
     }
 
     public void lisaaSolmu(Solmu uusiSolmu) {
+       
+        if (heapSize <= top)   {
+            System.out.println(top);
+            Solmu[] newKeko = new Solmu[keko.length * 2];
+            for (int i = 0; i < keko.length; i++)   {
+                newKeko[i] = keko[i];
+            }
+            keko = newKeko;
+            heapSize *= 2;
+            System.out.println(heapSize);
+          
+        }
+        
+        
         keko[top] = uusiSolmu;
 
         Solmu vertailtavalapsi = keko[top];
@@ -72,7 +75,7 @@ public class Keko {
         }
 
         this.top++;
-        //this.heapSize++;
+        
 
     }
 
@@ -93,13 +96,12 @@ public class Keko {
             return null;
         }
         Solmu minimi = keko[0];
-
-        heapSize--;
+        //heapSize--;
         top--;
         keko[0] = keko[top];
 
         heapify(0);
-
+        
         return minimi;
     }
 
@@ -135,14 +137,14 @@ public class Keko {
 
     }
 
-    public void tulostaKeko() {
-        for (int i = 0; i < getHeapSize(); i++) {
-            Solmu s = keko[i];
-            System.out.print(s.getKuljettava());
-            System.out.print(s.getY());
-            System.out.println(s.getX());
-
-        }
-    }
+//    public void tulostaKeko() {
+//        for (int i = 0; i < getHeapSize(); i++) {
+//            Solmu s = keko[i];
+//            System.out.print(s.getKuljettava());
+//            System.out.print(s.getY());
+//            System.out.println(s.getX());
+//
+//        }
+//    }
 
 }

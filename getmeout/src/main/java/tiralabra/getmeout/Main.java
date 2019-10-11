@@ -18,11 +18,16 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         Dijkstra dijkstra = new Dijkstra();
         Keko DijkstraAlustettu = dijkstra.alustatiedostosta();
+
+        double aloitusaika = System.currentTimeMillis();
         dijkstra.laskeReitti();
-        //dijkstra.tulostaReitti();
-      
+        double lopetusaika = System.currentTimeMillis();
+        double aika = lopetusaika - aloitusaika;
+        System.out.println("aikaa kului: " + aika + " millisekuntia");
+
     }
 
 }

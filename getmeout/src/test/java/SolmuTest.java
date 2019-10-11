@@ -72,17 +72,7 @@ public class SolmuTest {
          assertEquals(2==naapuriX, 2==naapuriY);
            
      }
-     @Test
-     public void PalauttaaYlaNaapurinVainJosTaulukossa() {
-         int x = 3;
-         int y = 2;
-         Solmu solmu = new Solmu(x,y);
-         solmu.setNaapurit(x,y);
-         Solmu naapuri = solmu.getNaapuriYla();
-         
-         assertEquals(naapuri, null);
-           
-     }
+
      
      
 }

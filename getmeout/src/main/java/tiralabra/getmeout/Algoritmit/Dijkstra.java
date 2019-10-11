@@ -87,7 +87,7 @@ public class Dijkstra {
 
     public void laskeReitti() {
         //Solmu maali = new Solmu(3, 3);
-        this.apu = new Solmu [25];
+        this.apu = new Solmu [35];
 
         while (!DijkstraKeko.IsEmpty()) {
             //System.out.println(DijkstraKeko.getHeapSize());
@@ -140,6 +140,7 @@ public class Dijkstra {
             
             //naapuri.setEdeltaja(kasiteltava);
             if (!DijkstraKeko.contains(naapuri)) {
+               
                 DijkstraKeko.lisaaSolmu(naapuri);
             }
             apu[i]=naapuri;
