@@ -89,11 +89,12 @@ public class Dijkstra {
         //Solmu maali = new Solmu(3, 3);
         this.apu = new Solmu [25];
 
-        while (DijkstraKeko.getHeapSize() > 0) {
+        while (!DijkstraKeko.IsEmpty()) {
+            //System.out.println(DijkstraKeko.getHeapSize());
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
-            System.out.println("käsiteltävä: " + kasiteltava.getY() + "," + kasiteltava.getX());
+            //System.out.println("käsiteltävä: " + kasiteltava.getY() + "," + kasiteltava.getX());
             if (kasiteltava.getEdeltaja() != null) {
-            System.out.println("edeltaja: " + kasiteltava.getEdeltaja().getY()+ ","+ kasiteltava.getEdeltaja().getX());
+            //System.out.println("edeltaja: " + kasiteltava.getEdeltaja().getY()+ ","+ kasiteltava.getEdeltaja().getX());
             }
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
                 Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
@@ -118,11 +119,12 @@ public class Dijkstra {
                 updateSolmu(kasiteltava, OikeaNaapuri);
             }
             
-//            if (kasiteltava.getMaali()) {
-//                tulostaReitti();
-//                return;
-//
-//            }
+            if (kasiteltava.getMaali()) {
+                
+                tulostaReitti(kasiteltava);
+                return;
+
+            }
 
         } 
     }
@@ -133,9 +135,10 @@ public class Dijkstra {
          
             if (naapuri.getEtaisyys() > kasiteltava.getEtaisyys()+1) { //jos paivitettavan etäisyys alkuun on suurempaa kuin kasiteltavan etäisyys niin srvo päivitetään.
             naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
+            naapuri.setEdeltaja(kasiteltava);
             }
             
-            naapuri.setEdeltaja(kasiteltava);
+            //naapuri.setEdeltaja(kasiteltava);
             if (!DijkstraKeko.contains(naapuri)) {
                 DijkstraKeko.lisaaSolmu(naapuri);
             }
@@ -155,10 +158,18 @@ public class Dijkstra {
         
     }
 
-    public void tulostaReitti() {
-        System.out.println(solmut[2][0].getEdeltaja().getY());
-        System.out.println(solmut[2][0].getEdeltaja().getX());
+    public void tulostaReitti(Solmu maali) {
+        this.maali = maali;
+        System.out.println(this.maali.getY()+ ","+ this.maali.getX());
+       while (this.maali.getEdeltaja() != null) {
+           System.out.println(this.maali.getEdeltaja().getY()+ ","+ this.maali.getEdeltaja().getX());
+           this.maali = this.maali.getEdeltaja();
+       }
+        
+      
 
-    }
+       }
+
+    
 
 }
