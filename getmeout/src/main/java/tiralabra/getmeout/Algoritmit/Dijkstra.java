@@ -89,7 +89,7 @@ public class Dijkstra {
         //Solmu maali = new Solmu(3, 3);
         this.apu = new Solmu [35];
 
-        while (!DijkstraKeko.IsEmpty()) {
+        while (!DijkstraKeko.isEmpty()) {
             //System.out.println(DijkstraKeko.getHeapSize());
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
             //System.out.println("käsiteltävä: " + kasiteltava.getY() + "," + kasiteltava.getX());
