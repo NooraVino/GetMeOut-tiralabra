@@ -90,12 +90,9 @@ public class Dijkstra {
         this.apu = new Solmu [35];
 
         while (!DijkstraKeko.isEmpty()) {
-            //System.out.println(DijkstraKeko.getHeapSize());
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
             //System.out.println("käsiteltävä: " + kasiteltava.getY() + "," + kasiteltava.getX());
-            if (kasiteltava.getEdeltaja() != null) {
-            //System.out.println("edeltaja: " + kasiteltava.getEdeltaja().getY()+ ","+ kasiteltava.getEdeltaja().getX());
-            }
+      
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
                 Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
                // System.out.println("ylaNaapuri: " + ylaNaapuri.getKuljettava() + ylaNaapuri.getY() + ylaNaapuri.getX());
@@ -142,6 +139,7 @@ public class Dijkstra {
             if (!DijkstraKeko.contains(naapuri)) {
                
                 DijkstraKeko.lisaaSolmu(naapuri);
+                System.out.println("uusi" + naapuri.getEtaisyys());
             }
             apu[i]=naapuri;
             i++;

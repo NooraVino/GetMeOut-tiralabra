@@ -20,7 +20,7 @@ public class Keko {
     public Keko() {
         this.keko = new Solmu[10];
         this.heapSize = 10;
-        this.top = 0;
+        this.top = 1;
     }
 
     public int getHeapSize() {
@@ -32,7 +32,7 @@ public class Keko {
     }
 
     public boolean isEmpty() {
-        if (this.top <= 0) {
+        if (this.top == 0) {
             return true;
         } else {
             return false;
@@ -101,7 +101,7 @@ public class Keko {
         int i = top;
 
         while (i > 1 && this.keko[i / 2].getEtaisyys() > k.getEtaisyys()) {
-            System.out.println("jaa");
+           
             keko[i] = keko[i / 2];
             i = i / 2;
 
@@ -126,70 +126,63 @@ public class Keko {
             return null;
         }
         
-        Solmu minimi = keko[0];
+        Solmu minimi = keko[1];
+        System.out.println(minimi.getEtaisyys());
+    
         top--;
-        keko[0] = keko[top];
+        keko[1] = keko[top];
 
-        heapify(0);
+        heapify(1);
 
         return minimi;
     }
 
-    public void heapify(int indeksi) {  
-        int vasen = indeksi*2;
-        int oikea = indeksi*2+1;
-        int pienin;
-        if (oikea <= top) {
-            if (getPaikka(keko[vasen]) < getPaikka(keko[oikea])) {
-                pienin = vasen;
-            } else {
-                pienin = oikea;
-            }
-            if (getPaikka(keko[indeksi]) > getPaikka(keko[pienin])) {
-                swap(indeksi, pienin);
-                heapify(pienin);
-            }
-        } else if (getPaikka(keko[vasen]) == top && getPaikka(keko[indeksi]) > getPaikka(keko[vasen])) {
-            swap(indeksi, vasen);
-        }
-    }  
-//
-//        if ((indeksi * 2 + 1) < top) {
-//
-//            int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
-//            int oikeankoko = (keko[(indeksi * 2 + 1)]).getEtaisyys();
-//            int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
-//
-//            if (tarkistettavasolmu > (Math.min(vasemmankoko, oikeankoko))) {
-//                if (vasemmankoko < oikeankoko) {
-//                    swap(indeksi, (indeksi * 2));
-//                    heapify((indeksi * 2));
-//                } else {
-//                    swap(indeksi, (indeksi * 2 + 1));
-//                    heapify(indeksi * 2 + 1);
-//                }
-//
-//            }
-//
-//        } else if ((indeksi * 2) < top) {
-//            int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
-//            int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
-//            if (tarkistettavasolmu > vasemmankoko) {
-//
-//                swap(indeksi, (indeksi * 2));
-//            }
-//
-//        }
-//
-//    }
+    public void heapify(int indeksi) { 
+    
+       if ((indeksi * 2 + 1) < top) {
+           
+            int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
+            int oikeankoko = (keko[(indeksi * 2 + 1)]).getEtaisyys();
+            int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
 
-//    public void tulostaKeko() {
-//        for (int i = 0; i < getHeapSize(); i++) {
-//            Solmu s = keko[i];
-//            System.out.print(s.getKuljettava());
-//            System.out.print(s.getY());
-//            System.out.println(s.getX());
-//
-//        }
-//    }
+
+            if (tarkistettavasolmu > (Math.min(vasemmankoko, oikeankoko))) {
+                
+                if (vasemmankoko<oikeankoko) {
+                    swap(indeksi, (indeksi*2));
+                    heapify((indeksi*2));
+                    
+                }          
+                
+                else {
+                swap(indeksi, (indeksi*2+1));
+                heapify(indeksi*2+1);
+                }
+               
+            }
+
+        } else if ((indeksi * 2) < top) {
+            int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
+            int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
+            if (tarkistettavasolmu > vasemmankoko) {
+                
+                swap(indeksi, (indeksi*2));
+           }
+
+        }
+
+    }
+
+           
+        
+
+    public void tulostaKeko() {
+        for (int i = 0; i < getHeapSize(); i++) {
+            Solmu s = keko[i];
+            System.out.print(s.getEtaisyys());
+            System.out.print(s.getY());
+            System.out.println(s.getX());
+
+        }
+    }
 }

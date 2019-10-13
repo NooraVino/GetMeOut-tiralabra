@@ -77,25 +77,28 @@ public class KekoTest {
         testiKeko.lisaaSolmu(s);
         testiKeko.lisaaSolmu(t);
 
-        testiKeko.swap(1, 4);
+        testiKeko.swap(1, 5);
 
         assertEquals(testiKeko.getPaikka(t), 1);
 
     }
 
-//    @Test
-//    public void poistaaPienimmän() {
-//        Solmu s = new Solmu(1, 5);
-//        Solmu t = new Solmu(2, 5);
-//        s.setEtaisyys(4);
-//        t.setEtaisyys(1);
-//        testiKeko.lisaaSolmu(s);
-//        testiKeko.lisaaSolmu(t);
-//
-//        Solmu y = testiKeko.PoistaMinimi();
-//
-//        assertEquals(y, t);
-//
-//    }
+    @Test
+    public void poistaaPienimmän() {
+        Solmu s = new Solmu(1, 5);
+        Solmu t = new Solmu(2, 5);
+        
+        testiKeko.lisaaSolmu(s);
+        testiKeko.lisaaSolmu(t);
+        s.setEtaisyys(2);
+        t.setEtaisyys(1);
+
+        int p = testiKeko.PoistaMinimi().getEtaisyys();
+        int u = testiKeko.PoistaMinimi().getEtaisyys();
+              
+
+        assertEquals(u, 1);
+
+    }
 
 }

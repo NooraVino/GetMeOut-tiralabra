@@ -22,6 +22,7 @@ public class Solmu {
     private Solmu naapuriOikea;
     private int paikka;
     private boolean maali;
+   
 
     public Solmu(int x, int y) {
         this.x = x;
@@ -30,6 +31,7 @@ public class Solmu {
         this.edeltaja = null;
         this.paikka = 0;
         this.maali = false;
+        this.distance = Integer.MAX_VALUE;
 
     }
 
