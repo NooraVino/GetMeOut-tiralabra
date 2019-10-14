@@ -22,7 +22,6 @@ public class Solmu {
     private Solmu naapuriOikea;
     private int paikka;
     private boolean maali;
-   
 
     public Solmu(int x, int y) {
         this.x = x;
@@ -36,7 +35,6 @@ public class Solmu {
     }
 
     public void setNaapurit(int x, int y) {
-
         this.naapuriYla = new Solmu(x, y - 1);
         this.naapuriAla = new Solmu(x, y + 1);
         this.naapuriVasen = new Solmu((x - 1), y);
@@ -82,9 +80,11 @@ public class Solmu {
 
     /**
      * asetetaan solmun etäisyysarvio lähtösolmusta.
+     *
+     * @param etaisyys etaisyys lahtosolmuun.
      */
-    public void setEtaisyys(int i) {
-        this.distance = i;
+    public void setEtaisyys(int etaisyys) {
+        this.distance = etaisyys;
     }
 
     public int getEtaisyys() {
@@ -103,10 +103,11 @@ public class Solmu {
     public Solmu getEdeltaja() {
         return this.edeltaja;
     }
-    
+
     public void setMaali() {
         this.maali = true;
     }
+
     public boolean getMaali() {
         return this.maali;
     }
@@ -118,7 +119,5 @@ public class Solmu {
     public void setPaikkaKeossa(int paikka) {
         this.paikka = paikka;
     }
-    
-   
 
 }

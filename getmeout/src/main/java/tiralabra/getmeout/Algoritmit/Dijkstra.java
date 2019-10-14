@@ -34,7 +34,7 @@ public class Dijkstra {
 
     public Keko alustatiedostosta() {
         this.solmut = new Solmu[25][25];
-        
+
         DijkstraKeko = new Keko();
         ArrayList<String> rivit = new ArrayList<>();
 
@@ -55,7 +55,6 @@ public class Dijkstra {
                 Solmu solmu = new Solmu(x, y);
 
                 solmu.setNaapurit(x, y);
-                solmu.setEtaisyys(Integer.MAX_VALUE);
 
                 if (arvo == '1') {
                     solmu.setKuljettava();
@@ -67,6 +66,9 @@ public class Dijkstra {
                     solmu.setEtaisyys(0);
                     DijkstraKeko.lisaaSolmu(solmu);
                 }
+                /**
+                 * Maalisolmun asettaminen.
+                 */
 
                 if (arvo == '3') {
                     solmu.setKuljettava();
@@ -85,17 +87,20 @@ public class Dijkstra {
 
     }
 
+    /**
+     * Poistaa pienimmän Solmun keosta ja jos Solmulla on naapuri niin päivittää
+     * kyseisin naapurin arvot. Toistetaan kunnes Keko on tyhjä. Jos maaliSolmu
+     * löytyy niin kutsutaan metodia TulostaKeko.
+     */
     public void laskeReitti() {
-        //Solmu maali = new Solmu(3, 3);
-        this.apu = new Solmu [35];
+        this.apu = new Solmu[50];
 
         while (!DijkstraKeko.isEmpty()) {
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
-            //System.out.println("käsiteltävä: " + kasiteltava.getY() + "," + kasiteltava.getX());
-      
+
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
                 Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
-               // System.out.println("ylaNaapuri: " + ylaNaapuri.getKuljettava() + ylaNaapuri.getY() + ylaNaapuri.getX());
+                // System.out.println("ylaNaapuri: " + ylaNaapuri.getKuljettava() + ylaNaapuri.getY() + ylaNaapuri.getX());
                 updateSolmu(kasiteltava, ylaNaapuri);
             }
 
@@ -115,60 +120,63 @@ public class Dijkstra {
                 //System.out.println("OikeaNaapuri: " + OikeaNaapuri.getKuljettava() + OikeaNaapuri.getY() + OikeaNaapuri.getX());
                 updateSolmu(kasiteltava, OikeaNaapuri);
             }
-            
+
             if (kasiteltava.getMaali()) {
-                
                 tulostaReitti(kasiteltava);
                 return;
 
             }
 
-        } 
+        }
+        System.out.println("reittiä ei löytynyt");
     }
 
+    /**
+     * Paivittaa kasiteltavan solmun kaikkien taulukon sisällä olevien naapurien
+     * arvot jos naapuri on kuljettava.
+     *
+     * @param kasiteltava
+     * @param naapuri
+     */
+
     public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
-      
-        if (naapuri.getKuljettava()&& contains(naapuri)== false) {
-         
-            if (naapuri.getEtaisyys() > kasiteltava.getEtaisyys()+1) { //jos paivitettavan etäisyys alkuun on suurempaa kuin kasiteltavan etäisyys niin srvo päivitetään.
-            naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
-            naapuri.setEdeltaja(kasiteltava);
+
+        if (naapuri.getKuljettava() && contains(naapuri) == false) {
+
+            if (naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + 1) { //jos paivitettavan etäisyys alkuun on suurempaa kuin kasiteltavan etäisyys niin srvo päivitetään.
+                naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
+                naapuri.setEdeltaja(kasiteltava);
+                //jääkö solmu väärälle paikalle keossa?
             }
-            
-            //naapuri.setEdeltaja(kasiteltava);
+
             if (!DijkstraKeko.contains(naapuri)) {
-               
                 DijkstraKeko.lisaaSolmu(naapuri);
-                System.out.println("uusi" + naapuri.getEtaisyys());
+
             }
-            apu[i]=naapuri;
+            apu[i] = naapuri;
             i++;
         }
 
     }
-    
-    public boolean contains(Solmu n){
-        for(int i=0;i<apu.length-1;i++){
-            if(apu[i]== n){
+
+    public boolean contains(Solmu n) {
+        for (int i = 0; i < apu.length - 1; i++) {
+            if (apu[i] == n) {
                 return true;
             }
         }
         return false;
-        
+
     }
 
     public void tulostaReitti(Solmu maali) {
         this.maali = maali;
-        System.out.println(this.maali.getY()+ ","+ this.maali.getX());
-       while (this.maali.getEdeltaja() != null) {
-           System.out.println(this.maali.getEdeltaja().getY()+ ","+ this.maali.getEdeltaja().getX());
-           this.maali = this.maali.getEdeltaja();
-       }
-        
-      
+        System.out.println(this.maali.getY() + "," + this.maali.getX());
+        while (this.maali.getEdeltaja() != null) {
+            System.out.println(this.maali.getEdeltaja().getY() + "," + this.maali.getEdeltaja().getX());
+            this.maali = this.maali.getEdeltaja();
+        }
 
-       }
-
-    
+    }
 
 }

@@ -38,29 +38,27 @@ public class Keko {
             return false;
         }
     }
-    
+
     public Solmu getSolmu(Solmu n) {
         for (int i = 0; i < this.top; i++) {
             if (keko[i] == n) {
                 return n;
-            } 
-            
             }
+
+        }
         return null;
     }
-    
-    public int getPaikka(Solmu n ){
+
+    public int getPaikka(Solmu n) {
         for (int i = 0; i < this.top; i++) {
             if (keko[i] == n) {
                 return i;
-            } 
-            
             }
+
+        }
         return 0;
-    
-        
+
     }
-    
 
     public boolean contains(Solmu n) {
         for (int i = 0; i < this.top; i++) {
@@ -92,23 +90,18 @@ public class Keko {
      *
      * @param uusiSolmu
      */
-    public void lisaaSolmu(Solmu k) {
+    public void lisaaSolmu(Solmu uusiSolmu) {
 
         if (heapSize <= top) {
             kasvataKeonKokoa();
         }
-
         int i = top;
-
-        while (i > 1 && this.keko[i / 2].getEtaisyys() > k.getEtaisyys()) {
-           
+        while (i > 1 && this.keko[i / 2].getEtaisyys() > uusiSolmu.getEtaisyys()) {
             keko[i] = keko[i / 2];
             i = i / 2;
-
         }
-
         top++;
-        keko[i] = k;
+        keko[i] = uusiSolmu;
 
     }
 
@@ -125,10 +118,10 @@ public class Keko {
         if (top == 0) {
             return null;
         }
-        
+
         Solmu minimi = keko[1];
         System.out.println(minimi.getEtaisyys());
-    
+
         top--;
         keko[1] = keko[top];
 
@@ -137,44 +130,38 @@ public class Keko {
         return minimi;
     }
 
-    public void heapify(int indeksi) { 
-    
-       if ((indeksi * 2 + 1) < top) {
-           
+    public void heapify(int indeksi) {
+
+        if ((indeksi * 2 + 1) < top) {
+
             int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
             int oikeankoko = (keko[(indeksi * 2 + 1)]).getEtaisyys();
             int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
 
-
             if (tarkistettavasolmu > (Math.min(vasemmankoko, oikeankoko))) {
-                
-                if (vasemmankoko<oikeankoko) {
-                    swap(indeksi, (indeksi*2));
-                    heapify((indeksi*2));
-                    
-                }          
-                
-                else {
-                swap(indeksi, (indeksi*2+1));
-                heapify(indeksi*2+1);
+
+                if (vasemmankoko < oikeankoko) {
+                    swap(indeksi, (indeksi * 2));
+                    heapify((indeksi * 2));
+
+                } else {
+                    swap(indeksi, (indeksi * 2 + 1));
+                    heapify(indeksi * 2 + 1);
                 }
-               
+
             }
 
         } else if ((indeksi * 2) < top) {
             int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
             int tarkistettavasolmu = (keko[indeksi]).getEtaisyys();
             if (tarkistettavasolmu > vasemmankoko) {
-                
-                swap(indeksi, (indeksi*2));
-           }
+
+                swap(indeksi, (indeksi * 2));
+            }
 
         }
 
     }
-
-           
-        
 
     public void tulostaKeko() {
         for (int i = 0; i < getHeapSize(); i++) {

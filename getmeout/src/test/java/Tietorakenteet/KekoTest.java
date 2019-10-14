@@ -36,7 +36,10 @@ public class KekoTest {
     @Before
     public void setUp() {
         testiKeko = new Keko();
-
+        Solmu lahto = new Solmu(0, 0);
+        lahto.setEtaisyys(0);
+        
+        testiKeko.lisaaSolmu(lahto);
         testiKeko.lisaaSolmu(new Solmu(1, 2));
         testiKeko.lisaaSolmu(new Solmu(3, 4));
         testiKeko.lisaaSolmu(new Solmu(4, 5));
@@ -77,7 +80,7 @@ public class KekoTest {
         testiKeko.lisaaSolmu(s);
         testiKeko.lisaaSolmu(t);
 
-        testiKeko.swap(1, 5);
+        testiKeko.swap(1, 6);
 
         assertEquals(testiKeko.getPaikka(t), 1);
 
@@ -85,19 +88,37 @@ public class KekoTest {
 
     @Test
     public void poistaaPienimmän() {
-        Solmu s = new Solmu(1, 5);
-        Solmu t = new Solmu(2, 5);
         
-        testiKeko.lisaaSolmu(s);
-        testiKeko.lisaaSolmu(t);
-        s.setEtaisyys(2);
+        Solmu t = new Solmu(2, 5);
+        Solmu a = new Solmu(4, 6);
+        Solmu b = new Solmu(3, 6);
+        Solmu c = new Solmu(2, 6);
+        Solmu d = new Solmu(5, 6);
+        
         t.setEtaisyys(1);
+        a.setEtaisyys(56);
+        b.setEtaisyys(4);
+        d.setEtaisyys(2);
+        
+        
+        testiKeko.lisaaSolmu(t);
+        testiKeko.lisaaSolmu(a);
+        testiKeko.lisaaSolmu(b);
+        testiKeko.lisaaSolmu(c);
+        testiKeko.lisaaSolmu(d);
+        
+        
+       
+        
 
-        int p = testiKeko.PoistaMinimi().getEtaisyys();
+        testiKeko.PoistaMinimi(); //poistaa lahtoSolmun
+        testiKeko.PoistaMinimi();
+         testiKeko.PoistaMinimi();
+         testiKeko.PoistaMinimi();
         int u = testiKeko.PoistaMinimi().getEtaisyys();
               
 
-        assertEquals(u, 1);
+        assertEquals(u, 56);
 
     }
 
