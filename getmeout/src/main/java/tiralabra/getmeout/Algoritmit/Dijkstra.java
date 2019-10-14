@@ -22,13 +22,12 @@ public class Dijkstra {
     Solmu[][] solmut;
     public int korkeus;
     public int leveys;
-    public Solmu[] apu;
-    public int i;
+   
 
     public void Dijkstra() {
         this.korkeus = 0;
         this.leveys = 0;
-        this.i = 0;
+     
 
     }
 
@@ -38,7 +37,7 @@ public class Dijkstra {
         DijkstraKeko = new Keko();
         ArrayList<String> rivit = new ArrayList<>();
 
-        try (Scanner lukija = new Scanner(new File("huone.txt"))) {
+        try (Scanner lukija = new Scanner(new File("labyrintti2.txt"))) {
             while (lukija.hasNextLine()) {
                 rivit.add(lukija.nextLine());
             }
@@ -94,7 +93,6 @@ public class Dijkstra {
      * löytyy niin kutsutaan metodia TulostaKeko.
      */
     public void laskeReitti() {
-        this.apu = new Solmu[500000];
 
         while (!DijkstraKeko.isEmpty()) {
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
@@ -148,28 +146,15 @@ public class Dijkstra {
                 naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
                 naapuri.setEdeltaja(kasiteltava);
                 DijkstraKeko.lisaaSolmu(naapuri);
-                //jääkö solmu väärälle paikalle keossa?
-            }
-
-            //if (!DijkstraKeko.contains(naapuri)) {
-                
+             
+            }  
 
             }
-            //apu[i] = naapuri;
-            //i++;
-        //}
+        
 
     }
 
-    public boolean contains(Solmu n) {
-        for (int i = 0; i < apu.length - 1; i++) {
-            if (apu[i] == n) {
-                return true;
-            }
-        }
-        return false;
 
-    }
 
     public void tulostaReitti(Solmu maali) {
         this.maali = maali;
