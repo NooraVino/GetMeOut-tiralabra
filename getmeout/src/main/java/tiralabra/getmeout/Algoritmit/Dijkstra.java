@@ -33,12 +33,12 @@ public class Dijkstra {
     }
 
     public Keko alustatiedostosta() {
-        this.solmut = new Solmu[25][25];
+        this.solmut = new Solmu[600][600];
 
         DijkstraKeko = new Keko();
         ArrayList<String> rivit = new ArrayList<>();
 
-        try (Scanner lukija = new Scanner(new File("labyrinth.txt"))) {
+        try (Scanner lukija = new Scanner(new File("huone.txt"))) {
             while (lukija.hasNextLine()) {
                 rivit.add(lukija.nextLine());
             }
@@ -56,21 +56,22 @@ public class Dijkstra {
 
                 solmu.setNaapurit(x, y);
 
-                if (arvo == '1') {
+                if (arvo == '.') {
                     solmu.setKuljettava();
                 }
                 /**
                  * Aloitussolmun lisääminen kekoon
                  */
-                if (arvo == '2') {
+                if (arvo == 'u') {
                     solmu.setEtaisyys(0);
                     DijkstraKeko.lisaaSolmu(solmu);
+                    System.out.println(solmu.getX() + "," + solmu.getY());
                 }
                 /**
                  * Maalisolmun asettaminen.
                  */
 
-                if (arvo == '3') {
+                if (arvo == 'x') {
                     solmu.setKuljettava();
                     solmu.setMaali();
                 }
@@ -93,7 +94,7 @@ public class Dijkstra {
      * löytyy niin kutsutaan metodia TulostaKeko.
      */
     public void laskeReitti() {
-        this.apu = new Solmu[50];
+        this.apu = new Solmu[500000];
 
         while (!DijkstraKeko.isEmpty()) {
             Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
@@ -141,21 +142,22 @@ public class Dijkstra {
 
     public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
 
-        if (naapuri.getKuljettava() && contains(naapuri) == false) {
+        if (naapuri.getKuljettava()) {
 
             if (naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + 1) { //jos paivitettavan etäisyys alkuun on suurempaa kuin kasiteltavan etäisyys niin srvo päivitetään.
                 naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
                 naapuri.setEdeltaja(kasiteltava);
+                DijkstraKeko.lisaaSolmu(naapuri);
                 //jääkö solmu väärälle paikalle keossa?
             }
 
-            if (!DijkstraKeko.contains(naapuri)) {
-                DijkstraKeko.lisaaSolmu(naapuri);
+            //if (!DijkstraKeko.contains(naapuri)) {
+                
 
             }
-            apu[i] = naapuri;
-            i++;
-        }
+            //apu[i] = naapuri;
+            //i++;
+        //}
 
     }
 

@@ -120,7 +120,7 @@ public class Keko {
         }
 
         Solmu minimi = keko[1];
-        System.out.println(minimi.getEtaisyys());
+        //System.out.println(minimi.getEtaisyys());
 
         top--;
         keko[1] = keko[top];
