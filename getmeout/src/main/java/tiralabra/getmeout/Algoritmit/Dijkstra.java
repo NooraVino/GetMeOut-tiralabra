@@ -6,7 +6,6 @@
 package tiralabra.getmeout.Algoritmit;
 
 import java.io.File;
-//import java.util.ArrayList;
 import java.util.Scanner;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Solmu;
@@ -17,8 +16,6 @@ import tiralabra.getmeout.Tietorakenteet.Lista;
  * @author vino
  */
 public class Dijkstra {
-
-    //public Solmu maali;
     Keko DijkstraKeko;
     Solmu[][] solmut;
     public int korkeus;
@@ -38,7 +35,6 @@ public class Dijkstra {
         this.solmut = new Solmu[600][600];
 
         DijkstraKeko = new Keko();
-        //ArrayList<String> rivit = new ArrayList<>();
         rivit = new Lista();
 
         try (Scanner lukija = new Scanner(tiedosto)) {
