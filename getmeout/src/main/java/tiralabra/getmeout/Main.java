@@ -20,7 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        File tiedosto = new File("testi.txt");
+        File tiedosto = new File("huone.txt");
 
         Dijkstra dijkstra = new Dijkstra();
         dijkstra.alustatiedostosta(tiedosto);
