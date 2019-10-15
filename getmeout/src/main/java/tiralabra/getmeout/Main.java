@@ -5,6 +5,7 @@
  */
 package tiralabra.getmeout;
 
+import java.io.File;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Algoritmit.Dijkstra;
 
@@ -18,15 +19,20 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        File tiedosto = new File("testi.txt");
 
         Dijkstra dijkstra = new Dijkstra();
-        dijkstra.alustatiedostosta();
+        dijkstra.alustatiedostosta(tiedosto);
 
         double aloitusaika = System.currentTimeMillis();
-        dijkstra.laskeReitti();
+        int maara =  dijkstra.laskeReitti();
         double lopetusaika = System.currentTimeMillis();
         double aika = lopetusaika - aloitusaika;
+       
         System.out.println("aikaa kului: " + aika + " millisekuntia");
+        System.out.println("solmuja lyhimpään polkuun kuuluu " + maara + " kappaletta.");
+       
 
     }
 

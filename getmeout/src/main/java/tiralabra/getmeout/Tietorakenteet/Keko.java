@@ -32,7 +32,7 @@ public class Keko {
     }
 
     public boolean isEmpty() {
-        if (this.top == 0) {
+        if (this.top == 1) {
             return true;
         } else {
             return false;
@@ -50,8 +50,8 @@ public class Keko {
     }
 
     public int getPaikka(Solmu n) {
-        for (int i = 0; i < this.top; i++) {
-            if (keko[i] == n) {
+        for (int i = 1; i < this.top; i++) {
+            if (keko[i].equals(n)) {
                 return i;
             }
 
@@ -92,16 +92,22 @@ public class Keko {
      */
     public void lisaaSolmu(Solmu uusiSolmu) {
 
+        
+        
         if (heapSize <= top) {
             kasvataKeonKokoa();
         }
         int i = top;
         while (i > 1 && this.keko[i / 2].getEtaisyys() > uusiSolmu.getEtaisyys()) {
             keko[i] = keko[i / 2];
+           
+            //keko[i].setPaikkaKeossa(i/2);
             i = i / 2;
         }
         top++;
         keko[i] = uusiSolmu;
+        keko[i].setPaikkaKeossa(i);
+     
 
     }
 
@@ -166,9 +172,11 @@ public class Keko {
     public void tulostaKeko() {
         for (int i = 0; i < getHeapSize(); i++) {
             Solmu s = keko[i];
-            System.out.print(s.getEtaisyys());
-            System.out.print(s.getY());
-            System.out.println(s.getX());
+            System.out.print("etaisyys: " + s.getEtaisyys());
+            System.out.println("PaikkaKeossa: " +getPaikka(s));
+            System.out.println("");
+            //System.out.print(s.getY());
+            //System.out.println(s.getX());
 
         }
     }

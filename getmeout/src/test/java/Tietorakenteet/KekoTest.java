@@ -36,10 +36,11 @@ public class KekoTest {
     @Before
     public void setUp() {
         testiKeko = new Keko();
-        Solmu lahto = new Solmu(0, 0);
-        lahto.setEtaisyys(0);
         
-        testiKeko.lisaaSolmu(lahto);
+        Solmu a = new Solmu(0, 0);
+        a.setEtaisyys(0);
+        testiKeko.lisaaSolmu(a);
+        
         testiKeko.lisaaSolmu(new Solmu(1, 2));
         testiKeko.lisaaSolmu(new Solmu(3, 4));
         testiKeko.lisaaSolmu(new Solmu(4, 5));
@@ -52,7 +53,7 @@ public class KekoTest {
 
     @Test
     public void IsEmptyPalauttaaTrue() {
-        testiKeko.setTop(0);
+        testiKeko.setTop(1);
 
         assertEquals(testiKeko.isEmpty(), true);
     }
@@ -119,6 +120,36 @@ public class KekoTest {
               
 
         assertEquals(u, 56);
+
+    }
+    
+    @Test
+    public void lisaaUudenSolmunOikein() {
+       
+        Solmu b = new Solmu(1, 5);
+        b.setEtaisyys(2);
+        testiKeko.lisaaSolmu(b);
+        
+        Solmu c = new Solmu(5, 5);
+        c.setEtaisyys(7);
+        testiKeko.lisaaSolmu(c);
+        
+        Solmu d = new Solmu (2,4);
+        d.setEtaisyys(5);
+        testiKeko.lisaaSolmu(d);
+        
+        Solmu e = new Solmu(6, 5);
+        e.setEtaisyys(8);
+        testiKeko.lisaaSolmu(e);
+        
+        Solmu f = new Solmu(7, 5);
+        f.setEtaisyys(9);
+        testiKeko.lisaaSolmu(f);
+      
+
+        int m = e.getPaikkaKeossa();
+
+        assertEquals(m, 4);
 
     }
 
