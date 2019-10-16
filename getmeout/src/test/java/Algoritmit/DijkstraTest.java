@@ -22,7 +22,7 @@ import tiralabra.getmeout.Solmu;
  */
 public class DijkstraTest {
     File tiedosto = new File("testi.txt");
-    File maaliton = new File("testi2");
+    File maaliton = new File("testi2.txt");
     Keko testiKeko;
     Dijkstra dijkstra;
     
@@ -39,8 +39,8 @@ public class DijkstraTest {
     
     @Before
     public void setUp() {
-        dijkstra = new Dijkstra();
-        dijkstra.alustatiedostosta(tiedosto);
+        dijkstra = new Dijkstra(tiedosto);
+       
         
         
       
@@ -66,7 +66,7 @@ public class DijkstraTest {
        
       
     }
-    
+   
     @Test
     public void UpdateSolmuPaivittaaVainJosNaapuriKuljettava() {
        Solmu kasiteltava = new Solmu(1, 1);
@@ -98,7 +98,7 @@ public class DijkstraTest {
       
     }
     
-    
+  
     @Test
     public void UpdateSolmuPaivittaajosKasiteltavanEtaisyysSuurempi() {
        Solmu kasiteltava = new Solmu(1, 1);
@@ -116,8 +116,8 @@ public class DijkstraTest {
     
     @Test
     public void LaskeReittiToimiiIlmanMaalia() {
-        
-       dijkstra.alustatiedostosta(maaliton);
+        dijkstra = new Dijkstra(maaliton);
+      
        
        int i = dijkstra.laskeReitti();
        assertEquals(i, 0);

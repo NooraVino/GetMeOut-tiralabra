@@ -86,22 +86,21 @@ public class Keko {
     }
 
     /**
-     * Lisää uuden solmun kekoon.
+     * Lisää uuden solmun kekoon ja tuplaa Keon koon aina tarvittaessa.
      *
      * @param uusiSolmu
      */
     public void lisaaSolmu(Solmu uusiSolmu) {
 
-        
-        
         if (heapSize <= top) {
             kasvataKeonKokoa();
         }
         int i = top;
+        
         while (i > 1 && this.keko[i / 2].getEtaisyys() > uusiSolmu.getEtaisyys()) {
-            keko[i] = keko[i / 2];
            
-            //keko[i].setPaikkaKeossa(i/2);
+            keko[i] = keko[i / 2];
+            keko[i].setPaikkaKeossa(i/2);
             i = i / 2;
         }
         top++;

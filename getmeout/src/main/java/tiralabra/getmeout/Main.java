@@ -20,10 +20,10 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        File tiedosto = new File("huone.txt");
+        File tiedosto = new File("huone.txt"); //huone, labyrintti2, testi, testi2
 
-        Dijkstra dijkstra = new Dijkstra();
-        dijkstra.alustatiedostosta(tiedosto);
+        Dijkstra dijkstra = new Dijkstra(tiedosto);
+        //dijkstra.alustatiedostosta(tiedosto);
 
         double aloitusaika = System.currentTimeMillis();
         int maara =  dijkstra.laskeReitti();

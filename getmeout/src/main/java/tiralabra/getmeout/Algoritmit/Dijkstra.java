@@ -7,6 +7,7 @@ package tiralabra.getmeout.Algoritmit;
 
 import java.io.File;
 import java.util.Scanner;
+import tiralabra.getmeout.Ruudukko;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Solmu;
 import tiralabra.getmeout.Tietorakenteet.Lista;
@@ -17,77 +18,24 @@ import tiralabra.getmeout.Tietorakenteet.Lista;
  */
 public class Dijkstra {
     Keko DijkstraKeko;
-    Solmu[][] solmut;
-    public int korkeus;
-    public int leveys;
-    public int yhteensa;
     public int vierailuja;
-    Lista rivit;
+    Ruudukko ruudukko;
+    Solmu [][] solmut;
+    Solmu alku;
+  
 
-    public void Dijkstra() {
-        this.korkeus = 0;
-        this.leveys = 0;
-        this.yhteensa = 0;
+    public Dijkstra(File tiedosto) {
         this.vierailuja = 0;
-    }
-
-    public Keko alustatiedostosta(File tiedosto) {
-        this.solmut = new Solmu[600][600];
-
+        ruudukko = new Ruudukko();
+        ruudukko.alustaTiedostosta(tiedosto);
+        solmut = ruudukko.getSolmut();
+        alku = ruudukko.getAlku();
         DijkstraKeko = new Keko();
-        rivit = new Lista();
-
-        try (Scanner lukija = new Scanner(tiedosto)) {
-            while (lukija.hasNextLine()) {
-                rivit.add(lukija.nextLine());
-            }
-        } catch (Exception e) {
-            System.out.println("Virhe: " + e.getMessage());
-
-        }
-
-        for (int y = 0; y < rivit.size(); y++) {
-            String rivi = rivit.get(y);
-
-            for (int x = 0; x < rivi.length(); x++) {
-                char arvo = rivi.charAt(x);
-                Solmu solmu = new Solmu(x, y);
-
-                solmu.setNaapurit(x, y);
-
-                if (arvo == '.') {
-                    solmu.setKuljettava();
-                }
-                /**
-                 * Aloitussolmun lisääminen kekoon
-                 */
-                if (arvo == 'u') {
-                    yhteensa++;
-                    solmu.setEtaisyys(0);
-                    DijkstraKeko.lisaaSolmu(solmu);
-
-                }
-                /**
-                 * Maalisolmun asettaminen.
-                 */
-
-                if (arvo == 'x') {
-                    yhteensa++;
-                    solmu.setKuljettava();
-                    solmu.setMaali();
-                }
-
-                this.korkeus = y;
-                this.leveys = x;
-                solmut[y][x] = solmu;
-
-            }
-
-        }
-
-        return DijkstraKeko;
-
+        
     }
+
+    
+        
 
     /**
      * Poistaa pienimmän Solmun keosta ja jos Solmulla on naapuri niin päivittää
@@ -95,6 +43,8 @@ public class Dijkstra {
      * löytyy niin kutsutaan metodia TulostaKeko.
      */
     public int laskeReitti() {
+   
+    DijkstraKeko.lisaaSolmu(alku);
         int maara = 0;
 
         while (!DijkstraKeko.isEmpty()) {
@@ -105,7 +55,7 @@ public class Dijkstra {
                 updateSolmu(kasiteltava, ylaNaapuri);
             }
 
-            if (kasiteltava.getNaapuriAla().getY() <= this.korkeus) {
+            if (kasiteltava.getNaapuriAla().getY() <= ruudukko.getKorkeus()) {
                 Solmu alaNaapuri = solmut[kasiteltava.getNaapuriAla().getY()][kasiteltava.getNaapuriAla().getX()];
                 updateSolmu(kasiteltava, alaNaapuri);
             }
@@ -114,7 +64,7 @@ public class Dijkstra {
                 Solmu VasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
                 updateSolmu(kasiteltava, VasenNaapuri);
             }
-            if (kasiteltava.getNaapuriOikea().getX() <= this.leveys) {
+            if (kasiteltava.getNaapuriOikea().getX() <= ruudukko.getLeveys()) {
                 Solmu OikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
                 updateSolmu(kasiteltava, OikeaNaapuri);
             }
@@ -126,8 +76,8 @@ public class Dijkstra {
 
         }
 
-        System.out.println("kuljettavia solmuja yhteenä: " + yhteensa);
-        System.out.println("kaikenkaikkiaan solmuja: " + (korkeus + 1) * (leveys + 1));
+        System.out.println("kuljettavia solmuja yhteenä: " + ruudukko.getYhteensa());
+        System.out.println("kaikenkaikkiaan solmuja: " + (ruudukko.getKorkeus()+1 ) * (ruudukko.getLeveys()+1 ));
 
         if (maara == 0) {
             System.out.println("maalia ei löytynyt");
@@ -147,7 +97,7 @@ public class Dijkstra {
             naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
             naapuri.setEdeltaja(kasiteltava);
             DijkstraKeko.lisaaSolmu(naapuri);
-            yhteensa++;
+            ruudukko.kasvata();
 
         }
 

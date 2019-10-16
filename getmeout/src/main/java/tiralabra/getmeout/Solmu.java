@@ -111,6 +111,7 @@ public class Solmu {
     public boolean getMaali() {
         return this.maali;
     }
+    
 
     public int getPaikkaKeossa() {
         return paikka;
