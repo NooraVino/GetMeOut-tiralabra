@@ -6,6 +6,7 @@
 package tiralabra.getmeout;
 
 import java.io.File;
+import tiralabra.getmeout.Algoritmit.Astar;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Algoritmit.Dijkstra;
 
@@ -21,10 +22,25 @@ public class Main {
     public static void main(String[] args) {
         
         File tiedosto = new File("huone.txt"); //huone, labyrintti2, testi, testi2
+        Ruudukko ruudukko = new Ruudukko();
+        ruudukko.alustaTiedostosta(tiedosto);
+        Dijkstra dijkstra = new Dijkstra(ruudukko);
+        //Heuristic h = new Heuristic();
+      
 
-        Dijkstra dijkstra = new Dijkstra(tiedosto);
-        //dijkstra.alustatiedostosta(tiedosto);
-
+      Astar pathFinder = new Astar(ruudukko);
+        double aloitusaikaA = System.currentTimeMillis();
+        
+        int j = pathFinder.laskeReitti();
+        double lopetusaikaA = System.currentTimeMillis();
+        double aikaA = lopetusaikaA - aloitusaikaA;
+        System.out.println("aikaa kului: " + aikaA + " millisekuntia");
+        System.out.println("A* algoritmilla polkua haettaessa tutkittiin solmuja yhteensä "+pathFinder.getCount());
+        System.out.println(j);
+        
+        System.out.println("**********************************************");
+        
+        
         double aloitusaika = System.currentTimeMillis();
         int maara =  dijkstra.laskeReitti();
         double lopetusaika = System.currentTimeMillis();

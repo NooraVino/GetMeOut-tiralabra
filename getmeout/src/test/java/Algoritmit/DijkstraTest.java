@@ -14,6 +14,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Algoritmit.Dijkstra;
+import tiralabra.getmeout.Ruudukko;
 import tiralabra.getmeout.Solmu;
 
 /**
@@ -25,6 +26,7 @@ public class DijkstraTest {
     File maaliton = new File("testi2.txt");
     Keko testiKeko;
     Dijkstra dijkstra;
+    Ruudukko ruudukko;
     
     public DijkstraTest() {
     }
@@ -39,7 +41,9 @@ public class DijkstraTest {
     
     @Before
     public void setUp() {
-        dijkstra = new Dijkstra(tiedosto);
+        ruudukko = new Ruudukko();
+        ruudukko.alustaTiedostosta(tiedosto);
+        dijkstra = new Dijkstra(ruudukko);
        
         
         
@@ -116,7 +120,10 @@ public class DijkstraTest {
     
     @Test
     public void LaskeReittiToimiiIlmanMaalia() {
-        dijkstra = new Dijkstra(maaliton);
+      ruudukko = new Ruudukko();
+        ruudukko.alustaTiedostosta(maaliton);
+        dijkstra = new Dijkstra(ruudukko);
+       
       
        
        int i = dijkstra.laskeReitti();

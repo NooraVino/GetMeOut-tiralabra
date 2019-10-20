@@ -17,10 +17,12 @@ public class Ruudukko {
 
     Lista rivit;
     Solmu[][] solmut;
+    Solmu [] solmu;
     public int korkeus;
     public int leveys;
     public int yhteensa;
     Solmu alku;
+    private Solmu  maali;
 
     public Ruudukko() {
         this.korkeus = 0;
@@ -28,7 +30,7 @@ public class Ruudukko {
         this.yhteensa = 0;
         this.solmut = new Solmu[600][600];
         rivit = new Lista();
-
+        
     }
     
     /**
@@ -71,6 +73,7 @@ public class Ruudukko {
                     yhteensa++;
                     solmu.setKuljettava();
                     solmu.setMaali();
+                    setMaali(solmu);
                 }
 
                 this.korkeus = y;
@@ -82,6 +85,50 @@ public class Ruudukko {
         }
 
     }
+    
+    public Solmu[] getNaapurit(int x, int y) {
+        Solmu s = this.getSolmu(x, y);
+        Solmu[] naapurit = new Solmu[4];
+        int laskuri = 0;
+        
+        if(x+1<korkeus && !this.getSolmu(x+1,y).getKuljettava()) {
+            naapurit[0] = this.getSolmu(x+1, y);
+            
+        } else {
+            naapurit[0] = null;
+            laskuri++;
+        }
+        if(x-1>=0 && !this.getSolmu(x-1,y).getKuljettava()) {
+            naapurit[1] = this.getSolmu(x-1, y);
+        } else {
+            naapurit[1] = null;
+            laskuri++;
+        }
+        if(y-1>=0 && !this.getSolmu(x,y-1).getKuljettava()) {
+            naapurit[2] = this.getSolmu(x, y-1);
+        } else {
+            naapurit[2] = null;
+            laskuri++;
+        }
+        if(y+1<leveys && !this.getSolmu(x,y+1).getKuljettava()) {
+            naapurit[3] = this.getSolmu(x, y+1);
+        } else {
+            naapurit[3] = null;
+            laskuri++;
+        }
+        
+        return naapurit;
+        
+    }
+    
+     public Solmu getSolmu(int x, int y) {
+        return solmut[x][y];
+    }
+     public Solmu getMaali() {
+        return this.maali;
+    }
+    
+    
 
     public Solmu[][] getSolmut() {
         return this.solmut;
@@ -105,6 +152,10 @@ public class Ruudukko {
 
     public void setAlku(Solmu s) {
         alku = s;
+    }
+    
+    public void setMaali(Solmu s) {
+        maali = s;
     }
 
     public Solmu getAlku() {

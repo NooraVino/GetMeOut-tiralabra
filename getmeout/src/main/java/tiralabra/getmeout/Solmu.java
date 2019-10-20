@@ -15,6 +15,7 @@ public class Solmu {
     private int y;
     private boolean kuljettava;
     private int distance;
+    private int distanceAlkuun;
     private Solmu edeltaja;
     private Solmu naapuriYla;
     private Solmu naapuriAla;
@@ -31,6 +32,7 @@ public class Solmu {
         this.paikka = 0;
         this.maali = false;
         this.distance = Integer.MAX_VALUE;
+        this.distanceAlkuun = 0;
 
     }
 
@@ -120,5 +122,15 @@ public class Solmu {
     public void setPaikkaKeossa(int paikka) {
         this.paikka = paikka;
     }
+    
+    public int getMatkaAlkuun() {
+        return distanceAlkuun;
+    }
+
+    public void setMatkaAlkuun(int matkaAlkuun) {
+        this.distanceAlkuun = matkaAlkuun;
+    }
+    
+    
 
 }

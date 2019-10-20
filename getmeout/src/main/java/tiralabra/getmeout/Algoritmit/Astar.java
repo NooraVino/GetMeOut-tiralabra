@@ -5,29 +5,111 @@
  */
 package tiralabra.getmeout.Algoritmit;
 
+
+
+import tiralabra.getmeout.Heuristic;
+import tiralabra.getmeout.Ruudukko;
+import tiralabra.getmeout.Solmu;
+import tiralabra.getmeout.Tietorakenteet.Keko;
+import tiralabra.getmeout.Tietorakenteet.NodeLista;
+
 /**
  *
  * @author vino
  */
 public class Astar {
     private int maara;
+    private int lyhinPolku;
+    Ruudukko ruudukko;
+    Keko avoin;
+    Solmu alku;
+    Solmu maali;
+    NodeLista suljettu;
+    NodeLista polku;
+    Solmu [][] solmut;
     
-    public Astar() {
+    public Astar(Ruudukko ruudukko) {
         this.maara = 0;
-    }}
+        this.ruudukko = ruudukko;
+        this.avoin = new Keko();
+        this.suljettu = new NodeLista();
+        this.polku = new NodeLista();
+        this.solmut = ruudukko.getSolmut();
+        this.lyhinPolku = 0;
+      
+    }
     
-//    public boolean etsiPolku(Ruudukko r, Heuristic h) {
-//            
-//            counter = 0;
-//            Keko avoin = new Keko();
-//            Solmu alku = r.getAlku();
-//            int x = alku.getX();
-//            int y = alku.getY();
-//            alku.setDist(0);
-//            int d = h.getEstimate(r, x, y);
-//            avoin.insert(new HeapNode(x, y, d));
-//            boolean pathFound = false;
-//            int[] maali = r.getMaali();
-//            
-//            
-//}
+    
+    public int laskeReitti(){
+        avoin.lisaaSolmu(ruudukko.getAlku());
+        
+         while(!avoin.isEmpty()){
+            Solmu kasiteltava=avoin.PoistaMinimi();
+            
+            if(kasiteltava.equals(ruudukko.getMaali())){
+                return lyhinReitti(ruudukko.getMaali());
+            }
+            
+            suljettu.lisaa(kasiteltava);
+            
+               if (kasiteltava.getNaapuriYla().getY() >= 0) {
+                Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
+                updateSolmu(kasiteltava, ylaNaapuri);
+            }
+
+            if (kasiteltava.getNaapuriAla().getY() <= ruudukko.getKorkeus()) {
+                Solmu alaNaapuri = solmut[kasiteltava.getNaapuriAla().getY()][kasiteltava.getNaapuriAla().getX()];
+                updateSolmu(kasiteltava, alaNaapuri);
+            }
+
+            if (kasiteltava.getNaapuriVasen().getX() >= 0) {
+                Solmu VasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
+                updateSolmu(kasiteltava, VasenNaapuri);
+            }
+            if (kasiteltava.getNaapuriOikea().getX() <= ruudukko.getLeveys()) {
+                Solmu OikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
+                updateSolmu(kasiteltava, OikeaNaapuri);
+            }
+            
+}
+         return -1;
+    }
+         
+             
+                
+     public void updateSolmu(Solmu kasiteltava, Solmu node){           
+                if(!suljettu.contains(node)&&node.getKuljettava()){
+                    int matkaAlkuun=kasiteltava.getMatkaAlkuun()+1;
+                    if(!avoin.contains(node) || matkaAlkuun<kasiteltava.getMatkaAlkuun()){
+                        maara++;
+                        node.setEdeltaja(kasiteltava);
+                        node.setMatkaAlkuun(matkaAlkuun);
+                       
+                        node.setEtaisyys(node.getMatkaAlkuun()+Heuristic.matka(node, ruudukko.getMaali()));
+                    
+                        if(!avoin.contains(node)){
+                            avoin.lisaaSolmu(node);
+                          
+                        }
+                    }
+                }
+     }
+     
+     private int lyhinReitti(Solmu n){
+        if(n.getEdeltaja()!=null){
+            polku.lisaa(n);
+            lyhinReitti(n.getEdeltaja());
+        }
+        return lyhinPolku++;
+    }
+        
+  
+        
+
+
+    public int getCount() {
+            return maara;
+        }
+}     
+            
+

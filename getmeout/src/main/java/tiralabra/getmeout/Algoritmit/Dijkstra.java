@@ -5,12 +5,11 @@
  */
 package tiralabra.getmeout.Algoritmit;
 
-import java.io.File;
-import java.util.Scanner;
+
 import tiralabra.getmeout.Ruudukko;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Solmu;
-import tiralabra.getmeout.Tietorakenteet.Lista;
+
 
 /**
  *
@@ -24,10 +23,9 @@ public class Dijkstra {
     Solmu alku;
   
 
-    public Dijkstra(File tiedosto) {
+    public Dijkstra(Ruudukko ruudukko) {
         this.vierailuja = 0;
-        ruudukko = new Ruudukko();
-        ruudukko.alustaTiedostosta(tiedosto);
+        this.ruudukko = ruudukko;
         solmut = ruudukko.getSolmut();
         alku = ruudukko.getAlku();
         DijkstraKeko = new Keko();
