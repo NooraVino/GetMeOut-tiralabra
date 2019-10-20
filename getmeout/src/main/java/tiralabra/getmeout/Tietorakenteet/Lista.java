@@ -13,22 +13,22 @@ public class Lista {
 
     private String[] lista;
     private int indeksi;
-    private int size;
+    private int koko;
 
     public Lista() {
         lista = new String[10];
         indeksi = 0;
-        size = 0;
+        koko = 0;
     }
 
-    public void add(String s) {
+    public void lisaa(String rivi) {
         if (indeksi < lista.length) {
-            size++;
-            lista[indeksi] = s;
+            koko++;
+            lista[indeksi] = rivi;
             indeksi++;
         } else {
             kasvataListaa(lista);
-            add(s);
+            lisaa(rivi);
         }
     }
 
@@ -45,7 +45,7 @@ public class Lista {
     }
 
     public int size() {
-        return size;
+        return koko;
     }
 
 }

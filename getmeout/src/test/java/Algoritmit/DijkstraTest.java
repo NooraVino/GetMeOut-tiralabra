@@ -127,7 +127,7 @@ public class DijkstraTest {
       
        
        int i = dijkstra.laskeReitti();
-       assertEquals(i, 0);
+       assertEquals(i, -1);
         
        
       

@@ -14,8 +14,8 @@ public class Solmu {
     private int x;
     private int y;
     private boolean kuljettava;
-    private int distance;
-    private int distanceAlkuun;
+    private int etaisyys;
+    private int etaisyysAlkuun;
     private Solmu edeltaja;
     private Solmu naapuriYla;
     private Solmu naapuriAla;
@@ -31,8 +31,8 @@ public class Solmu {
         this.edeltaja = null;
         this.paikka = 0;
         this.maali = false;
-        this.distance = Integer.MAX_VALUE;
-        this.distanceAlkuun = 0;
+        this.etaisyys = Integer.MAX_VALUE;
+        this.etaisyysAlkuun = 0;
 
     }
 
@@ -80,24 +80,14 @@ public class Solmu {
         return this.kuljettava;
     }
 
-    /**
-     * asetetaan solmun etäisyysarvio lähtösolmusta.
-     *
-     * @param etaisyys etaisyys lahtosolmuun.
-     */
     public void setEtaisyys(int etaisyys) {
-        this.distance = etaisyys;
+        this.etaisyys = etaisyys;
     }
 
     public int getEtaisyys() {
-        return this.distance;
+        return this.etaisyys;
     }
-
-    /**
-     * asetetaan edeltävä solmu toistaiseksi lyhyimmällä polulla.
-     *
-     * @param edeltaja Edeltävä solmu.
-     */
+    
     public void setEdeltaja(Solmu edeltaja) {
         this.edeltaja = edeltaja;
     }
@@ -114,7 +104,6 @@ public class Solmu {
         return this.maali;
     }
     
-
     public int getPaikkaKeossa() {
         return paikka;
     }
@@ -124,11 +113,11 @@ public class Solmu {
     }
     
     public int getMatkaAlkuun() {
-        return distanceAlkuun;
+        return etaisyysAlkuun;
     }
 
     public void setMatkaAlkuun(int matkaAlkuun) {
-        this.distanceAlkuun = matkaAlkuun;
+        this.etaisyysAlkuun = matkaAlkuun;
     }
     
     

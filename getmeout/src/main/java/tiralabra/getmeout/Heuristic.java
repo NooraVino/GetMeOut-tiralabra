@@ -11,12 +11,13 @@ package tiralabra.getmeout;
  */
 
 public class Heuristic {
+    
     public static int matka(Solmu s, Solmu maali){
         
-        int dumbHeurX=Math.abs(s.getX()-maali.getX());
-        int dumbHeurY=Math.abs(s.getY()-maali.getY());
+        int arvoX=Math.abs(s.getX()-maali.getX());
+        int arvoY=Math.abs(s.getY()-maali.getY());
         
-        return dumbHeurX+dumbHeurY+1;
+        return arvoX+arvoY+1;
     }
 } 
 

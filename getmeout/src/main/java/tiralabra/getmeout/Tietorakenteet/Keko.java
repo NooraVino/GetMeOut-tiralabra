@@ -23,10 +23,6 @@ public class Keko {
         this.top = 1;
     }
 
-    public int getHeapSize() {
-        return this.top;
-    }
-
     public void setTop(int top) {
         this.top = top;
     }
@@ -39,15 +35,6 @@ public class Keko {
         }
     }
 
-    public Solmu getSolmu(Solmu n) {
-        for (int i = 0; i < this.top; i++) {
-            if (keko[i] == n) {
-                return n;
-            }
-
-        }
-        return null;
-    }
 
     public int getPaikka(Solmu n) {
         for (int i = 1; i < this.top; i++) {
@@ -119,14 +106,12 @@ public class Keko {
 
     }
 
-    public Solmu PoistaMinimi() {
+    public Solmu poistaMinimi() {
         if (top == 0) {
             return null;
         }
 
         Solmu minimi = keko[1];
-        //System.out.println(minimi.getEtaisyys());
-
         top--;
         keko[1] = keko[top];
 
@@ -168,15 +153,5 @@ public class Keko {
 
     }
 
-    public void tulostaKeko() {
-        for (int i = 0; i < getHeapSize(); i++) {
-            Solmu s = keko[i];
-            System.out.print("etaisyys: " + s.getEtaisyys());
-            System.out.println("PaikkaKeossa: " +getPaikka(s));
-            System.out.println("");
-            //System.out.print(s.getY());
-            //System.out.println(s.getX());
 
-        }
-    }
 }

@@ -5,23 +5,24 @@
  */
 package tiralabra.getmeout.Algoritmit;
 
-
 import tiralabra.getmeout.Ruudukko;
 import tiralabra.getmeout.Tietorakenteet.Keko;
 import tiralabra.getmeout.Solmu;
-
+import tiralabra.getmeout.Tietorakenteet.SolmuLista;
 
 /**
  *
  * @author vino
  */
 public class Dijkstra {
+
     Keko DijkstraKeko;
-    public int vierailuja;
+    int vierailuja;
     Ruudukko ruudukko;
-    Solmu [][] solmut;
+    Solmu[][] solmut;
+    SolmuLista polku;
     Solmu alku;
-  
+    int lyhinPolku;
 
     public Dijkstra(Ruudukko ruudukko) {
         this.vierailuja = 0;
@@ -29,24 +30,28 @@ public class Dijkstra {
         solmut = ruudukko.getSolmut();
         alku = ruudukko.getAlku();
         DijkstraKeko = new Keko();
-        
-    }
+        this.polku = new SolmuLista();
+        this.lyhinPolku = 0;
 
-    
-        
+    }
 
     /**
      * Poistaa pienimmän Solmun keosta ja jos Solmulla on naapuri niin päivittää
      * kyseisin naapurin arvot. Toistetaan kunnes Keko on tyhjä. Jos maaliSolmu
      * löytyy niin kutsutaan metodia TulostaKeko.
+     *
+     * @return
      */
     public int laskeReitti() {
-   
-    DijkstraKeko.lisaaSolmu(alku);
-        int maara = 0;
+
+        DijkstraKeko.lisaaSolmu(alku);
 
         while (!DijkstraKeko.isEmpty()) {
-            Solmu kasiteltava = DijkstraKeko.PoistaMinimi();
+            Solmu kasiteltava = DijkstraKeko.poistaMinimi();
+
+            if (kasiteltava.getMaali()) {
+                return lyhinReitti(kasiteltava);
+            }
 
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
                 Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
@@ -67,35 +72,24 @@ public class Dijkstra {
                 updateSolmu(kasiteltava, OikeaNaapuri);
             }
 
-            if (kasiteltava.getMaali()) {
-
-                maara = tulostaReitti(kasiteltava);
-            }
-
         }
 
-        System.out.println("kuljettavia solmuja yhteenä: " + ruudukko.getYhteensa());
-        System.out.println("kaikenkaikkiaan solmuja: " + (ruudukko.getKorkeus()+1 ) * (ruudukko.getLeveys()+1 ));
-
-        if (maara == 0) {
-            System.out.println("maalia ei löytynyt");
-        }
-        return maara;
+        return -1;
     }
 
     /**
      * Paivittaa kasiteltavan solmun kaikkien taulukon sisällä olevien naapurien
-     * arvot jos naapuri on kuljettava.
+     * arvot jos naapuri on kuljettava. Arvo päivitetään vain jos se on suurempi
+     * kuin kasiteltavan arvo+1.
      *
      * @param kasiteltava
      * @param naapuri
      */
     public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
-        if (naapuri.getKuljettava() && naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + 1) { //jos paivitettavan etäisyys alkuun on suurempaa kuin kasiteltavan etäisyys niin srvo päivitetään.
+        if (naapuri.getKuljettava() && naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + 1) {
             naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
             naapuri.setEdeltaja(kasiteltava);
             DijkstraKeko.lisaaSolmu(naapuri);
-            ruudukko.kasvata();
 
         }
 
@@ -107,16 +101,12 @@ public class Dijkstra {
      * @param maali
      * @return
      */
-
-    public int tulostaReitti(Solmu maali) {
-        int solmuMaara = 1;
-
-        while (maali.getEdeltaja() != null) {
-            maali = maali.getEdeltaja();
-
-            solmuMaara++;
+    private int lyhinReitti(Solmu Solmu) {
+        if (Solmu.getEdeltaja() != null) {
+            polku.lisaa(Solmu);
+            lyhinReitti(Solmu.getEdeltaja());
         }
-        return solmuMaara;
+        return lyhinPolku++;
     }
 
 }

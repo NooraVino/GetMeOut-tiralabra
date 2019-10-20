@@ -47,15 +47,15 @@ public class ListaTest {
 
     @Test
     public void AddLisaaKaksi() {
-        lista.add(sana);
-        lista.add(sana);
+        lista.lisaa(sana);
+        lista.lisaa(sana);
         assertTrue(lista.size() == 2);
     }
 
     @Test
     public void ListaPitenee() {
         for (int i = 0; i < 12; i++) {
-            lista.add(sana);
+            lista.lisaa(sana);
         }
         assertTrue(lista.size() == 12);
 

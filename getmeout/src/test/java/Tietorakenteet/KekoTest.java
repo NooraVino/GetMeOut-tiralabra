@@ -112,11 +112,11 @@ public class KekoTest {
        
         
 
-        testiKeko.PoistaMinimi(); //poistaa lahtoSolmun
-        testiKeko.PoistaMinimi();
-         testiKeko.PoistaMinimi();
-         testiKeko.PoistaMinimi();
-        int u = testiKeko.PoistaMinimi().getEtaisyys();
+        testiKeko.poistaMinimi(); //poistaa lahtoSolmun
+        testiKeko.poistaMinimi();
+         testiKeko.poistaMinimi();
+         testiKeko.poistaMinimi();
+        int u = testiKeko.poistaMinimi().getEtaisyys();
               
 
         assertEquals(u, 56);
