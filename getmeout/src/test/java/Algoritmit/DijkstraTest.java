@@ -12,8 +12,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tiralabra.getmeout.Tietorakenteet.Keko;
-import tiralabra.getmeout.Algoritmit.Dijkstra;
+import tiralabra.getmeout.tietorakenteet.Keko;
+import tiralabra.getmeout.algoritmit.Dijkstra;
 import tiralabra.getmeout.Ruudukko;
 import tiralabra.getmeout.Solmu;
 
@@ -22,7 +22,7 @@ import tiralabra.getmeout.Solmu;
  * @author vino
  */
 public class DijkstraTest {
-    File tiedosto = new File("testi.txt");
+    File tiedosto = new File("testi5x34.txt");
     File maaliton = new File("testiMaaliton.txt");
     Keko testiKeko;
     Dijkstra dijkstra;

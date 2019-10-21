@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra.getmeout.Algoritmit;
+package tiralabra.getmeout.algoritmit;
 
 import tiralabra.getmeout.Heuristic;
 import tiralabra.getmeout.Ruudukko;
 import tiralabra.getmeout.Solmu;
-import tiralabra.getmeout.Tietorakenteet.Keko;
-import tiralabra.getmeout.Tietorakenteet.SolmuLista;
+import tiralabra.getmeout.tietorakenteet.Keko;
+import tiralabra.getmeout.tietorakenteet.SolmuLista;
 
 /**
  *
@@ -40,15 +40,12 @@ public class Astar {
 
     public int laskeReitti() {
         avoin.lisaaSolmu(ruudukko.getAlku());
-
         while (!avoin.isEmpty()) {
             Solmu kasiteltava = avoin.poistaMinimi();
 
             if (kasiteltava.equals(ruudukko.getMaali())) {
                 return lyhinReitti(ruudukko.getMaali());
             }
-
-            //suljettu.lisaa(kasiteltava);
 
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
                 Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
@@ -61,36 +58,31 @@ public class Astar {
             }
 
             if (kasiteltava.getNaapuriVasen().getX() >= 0) {
-                Solmu VasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
-                updateSolmu(kasiteltava, VasenNaapuri);
+                Solmu vasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
+                updateSolmu(kasiteltava, vasenNaapuri);
             }
             if (kasiteltava.getNaapuriOikea().getX() <= ruudukko.getLeveys()) {
-                Solmu OikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
-                updateSolmu(kasiteltava, OikeaNaapuri);
+                Solmu oikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
+                updateSolmu(kasiteltava, oikeaNaapuri);
             }
-
         }
         return -1;
     }
 
     public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
 
-            if (naapuri.getMatkaAlkuun() == Integer.MAX_VALUE && naapuri.getKuljettava() ) {
-                int matkaAlkuun = kasiteltava.getMatkaAlkuun() + 1;
-                maara++;
-                naapuri.setEdeltaja(kasiteltava);
-                naapuri.setMatkaAlkuun(matkaAlkuun);
-                naapuri.setEtaisyys(naapuri.getMatkaAlkuun() + Heuristic.matka(naapuri, ruudukko.getMaali()));
+        if (naapuri.getMatkaAlkuun() == Integer.MAX_VALUE && naapuri.getKuljettava()) {
+            int matkaAlkuun = kasiteltava.getMatkaAlkuun() + 1;
+            maara++;
+            naapuri.setEdeltaja(kasiteltava);
+            naapuri.setMatkaAlkuun(matkaAlkuun);
+            naapuri.setEtaisyys(naapuri.getMatkaAlkuun() + Heuristic.matka(naapuri, ruudukko.getMaali()));
 
-                //System.out.print(naapuri.getY());
-                //System.out.println(naapuri.getX());
-                avoin.lisaaSolmu(naapuri);
+            avoin.lisaaSolmu(naapuri);
 
-               
-                    }
+        }
     }
 
-    
     private int lyhinReitti(Solmu n) {
         if (n.getEdeltaja() != null) {
             polku.lisaa(n);

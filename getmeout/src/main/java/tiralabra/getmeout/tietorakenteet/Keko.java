@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra.getmeout.Tietorakenteet;
+package tiralabra.getmeout.tietorakenteet;
 
 import tiralabra.getmeout.Solmu;
 
@@ -34,7 +34,6 @@ public class Keko {
             return false;
         }
     }
-
 
     public int getPaikka(Solmu n) {
         for (int i = 1; i < this.top; i++) {
@@ -83,17 +82,16 @@ public class Keko {
             kasvataKeonKokoa();
         }
         int i = top;
-        
+
         while (i > 1 && this.keko[i / 2].getEtaisyys() > uusiSolmu.getEtaisyys()) {
-           
+
             keko[i] = keko[i / 2];
-            keko[i].setPaikkaKeossa(i/2);
+            keko[i].setPaikkaKeossa(i / 2);
             i = i / 2;
         }
         top++;
         keko[i] = uusiSolmu;
         keko[i].setPaikkaKeossa(i);
-     
 
     }
 
@@ -121,7 +119,6 @@ public class Keko {
     }
 
     public void heapify(int indeksi) {
-
         if ((indeksi * 2 + 1) < top) {
 
             int vasemmankoko = (keko[(indeksi * 2)]).getEtaisyys();
@@ -138,7 +135,6 @@ public class Keko {
                     swap(indeksi, (indeksi * 2 + 1));
                     heapify(indeksi * 2 + 1);
                 }
-
             }
 
         } else if ((indeksi * 2) < top) {
@@ -152,6 +148,5 @@ public class Keko {
         }
 
     }
-
 
 }

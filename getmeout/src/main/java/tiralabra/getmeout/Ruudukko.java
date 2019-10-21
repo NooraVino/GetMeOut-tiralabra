@@ -7,7 +7,7 @@ package tiralabra.getmeout;
 
 import java.io.File;
 import java.util.Scanner;
-import tiralabra.getmeout.Tietorakenteet.Lista;
+import tiralabra.getmeout.tietorakenteet.Lista;
 
 /**
  *

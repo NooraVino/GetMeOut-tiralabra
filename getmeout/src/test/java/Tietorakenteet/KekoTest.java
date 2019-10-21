@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tiralabra.getmeout.Solmu;
-import tiralabra.getmeout.Tietorakenteet.Keko;
+import tiralabra.getmeout.tietorakenteet.Keko;
 
 /**
  *

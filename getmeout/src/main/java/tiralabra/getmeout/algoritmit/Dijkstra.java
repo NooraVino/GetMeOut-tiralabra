@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra.getmeout.Algoritmit;
+package tiralabra.getmeout.algoritmit;
 
 import tiralabra.getmeout.Ruudukko;
-import tiralabra.getmeout.Tietorakenteet.Keko;
+import tiralabra.getmeout.tietorakenteet.Keko;
 import tiralabra.getmeout.Solmu;
-import tiralabra.getmeout.Tietorakenteet.SolmuLista;
+import tiralabra.getmeout.tietorakenteet.SolmuLista;
 
 /**
  *
@@ -16,7 +16,7 @@ import tiralabra.getmeout.Tietorakenteet.SolmuLista;
  */
 public class Dijkstra {
 
-    Keko DijkstraKeko;
+    Keko dijkstraKeko;
     int vierailuja;
     Ruudukko ruudukko;
     Solmu[][] solmut;
@@ -29,7 +29,7 @@ public class Dijkstra {
         this.ruudukko = ruudukko;
         solmut = ruudukko.getSolmut();
         alku = ruudukko.getAlku();
-        DijkstraKeko = new Keko();
+        dijkstraKeko = new Keko();
         this.polku = new SolmuLista();
         this.lyhinPolku = 0;
 
@@ -43,11 +43,10 @@ public class Dijkstra {
      * @return
      */
     public int laskeReitti() {
+        dijkstraKeko.lisaaSolmu(alku);
 
-        DijkstraKeko.lisaaSolmu(alku);
-
-        while (!DijkstraKeko.isEmpty()) {
-            Solmu kasiteltava = DijkstraKeko.poistaMinimi();
+        while (!dijkstraKeko.isEmpty()) {
+            Solmu kasiteltava = dijkstraKeko.poistaMinimi();
 
             if (kasiteltava.getMaali()) {
                 return lyhinReitti(kasiteltava);
@@ -64,12 +63,12 @@ public class Dijkstra {
             }
 
             if (kasiteltava.getNaapuriVasen().getX() >= 0) {
-                Solmu VasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
-                updateSolmu(kasiteltava, VasenNaapuri);
+                Solmu vasenNaapuri = solmut[kasiteltava.getNaapuriVasen().getY()][kasiteltava.getNaapuriVasen().getX()];
+                updateSolmu(kasiteltava, vasenNaapuri);
             }
             if (kasiteltava.getNaapuriOikea().getX() <= ruudukko.getLeveys()) {
-                Solmu OikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
-                updateSolmu(kasiteltava, OikeaNaapuri);
+                Solmu oikeaNaapuri = solmut[kasiteltava.getNaapuriOikea().getY()][kasiteltava.getNaapuriOikea().getX()];
+                updateSolmu(kasiteltava, oikeaNaapuri);
             }
 
         }
@@ -89,7 +88,7 @@ public class Dijkstra {
         if (naapuri.getKuljettava() && naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + 1) {
             naapuri.setEtaisyys(kasiteltava.getEtaisyys() + 1);
             naapuri.setEdeltaja(kasiteltava);
-            DijkstraKeko.lisaaSolmu(naapuri);
+            dijkstraKeko.lisaaSolmu(naapuri);
 
         }
 
@@ -101,10 +100,10 @@ public class Dijkstra {
      * @param maali
      * @return
      */
-    private int lyhinReitti(Solmu Solmu) {
-        if (Solmu.getEdeltaja() != null) {
-            polku.lisaa(Solmu);
-            lyhinReitti(Solmu.getEdeltaja());
+    private int lyhinReitti(Solmu solmu) {
+        if (solmu.getEdeltaja() != null) {
+            polku.lisaa(solmu);
+            lyhinReitti(solmu.getEdeltaja());
         }
         return lyhinPolku++;
     }

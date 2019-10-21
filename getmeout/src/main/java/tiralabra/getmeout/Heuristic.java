@@ -9,15 +9,13 @@ package tiralabra.getmeout;
  *
  * @author vino
  */
-
 public class Heuristic {
-    
-    public static int matka(Solmu s, Solmu maali){
-        
-        int arvoX=Math.abs(s.getX()-maali.getX());
-        int arvoY=Math.abs(s.getY()-maali.getY());
-        
-        return arvoX+arvoY;
-    }
-} 
 
+    public static int matka(Solmu s, Solmu maali) {
+
+        int arvoX = Math.abs(s.getX() - maali.getX());
+        int arvoY = Math.abs(s.getY() - maali.getY());
+
+        return arvoX + arvoY;
+    }
+}

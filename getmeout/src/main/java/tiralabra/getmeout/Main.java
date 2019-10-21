@@ -6,9 +6,8 @@
 package tiralabra.getmeout;
 
 import java.io.File;
-import tiralabra.getmeout.Algoritmit.Astar;
-import tiralabra.getmeout.Tietorakenteet.Keko;
-import tiralabra.getmeout.Algoritmit.Dijkstra;
+import tiralabra.getmeout.algoritmit.Astar;
+import tiralabra.getmeout.algoritmit.Dijkstra;
 
 /**
  *
