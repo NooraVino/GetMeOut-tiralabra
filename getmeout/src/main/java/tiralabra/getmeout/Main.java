@@ -21,7 +21,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        File tiedosto = new File("huone.txt"); //huone, labyrintti2, testi, testi2
+        File tiedosto = new File("testi512x512.txt"); //testi6x6, testi5x34, testi22x512, testi512x224, testi512x512
         Ruudukko ruudukko = new Ruudukko();
         ruudukko.alustaTiedostosta(tiedosto);
 

@@ -23,7 +23,7 @@ import tiralabra.getmeout.Solmu;
  */
 public class DijkstraTest {
     File tiedosto = new File("testi.txt");
-    File maaliton = new File("testi2.txt");
+    File maaliton = new File("testiMaaliton.txt");
     Keko testiKeko;
     Dijkstra dijkstra;
     Ruudukko ruudukko;

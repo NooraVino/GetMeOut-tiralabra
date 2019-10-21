@@ -48,7 +48,7 @@ public class Astar {
                 return lyhinReitti(ruudukko.getMaali());
             }
 
-            suljettu.lisaa(kasiteltava);
+            //suljettu.lisaa(kasiteltava);
 
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
                 Solmu ylaNaapuri = solmut[kasiteltava.getNaapuriYla().getY()][kasiteltava.getNaapuriYla().getX()];
@@ -74,23 +74,23 @@ public class Astar {
     }
 
     public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
-       if (!suljettu.contains(naapuri) && naapuri.getKuljettava()) {
-            int matkaAlkuun = kasiteltava.getMatkaAlkuun() + 1;
 
-            if (!avoin.contains(naapuri) || matkaAlkuun < kasiteltava.getMatkaAlkuun()) {
+            if (naapuri.getMatkaAlkuun() == Integer.MAX_VALUE && naapuri.getKuljettava() ) {
+                int matkaAlkuun = kasiteltava.getMatkaAlkuun() + 1;
                 maara++;
                 naapuri.setEdeltaja(kasiteltava);
                 naapuri.setMatkaAlkuun(matkaAlkuun);
                 naapuri.setEtaisyys(naapuri.getMatkaAlkuun() + Heuristic.matka(naapuri, ruudukko.getMaali()));
 
-                if (!avoin.contains(naapuri)) {
-                    avoin.lisaaSolmu(naapuri);
+                //System.out.print(naapuri.getY());
+                //System.out.println(naapuri.getX());
+                avoin.lisaaSolmu(naapuri);
 
-                }
-            }
-        }
+               
+                    }
     }
 
+    
     private int lyhinReitti(Solmu n) {
         if (n.getEdeltaja() != null) {
             polku.lisaa(n);
