@@ -20,41 +20,38 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        File tiedosto = new File("testi.txt"); //huone, labyrintti2, testi, testi2
+
+        File tiedosto = new File("huone.txt"); //huone, labyrintti2, testi, testi2
         Ruudukko ruudukko = new Ruudukko();
         ruudukko.alustaTiedostosta(tiedosto);
-        
-       
-       System.out.println("Ruudukossa solmuja yhteensä: " + (ruudukko.getKorkeus()+1 ) * (ruudukko.getLeveys()+1 ));
-       System.out.println("Ruudukossa kuljettavia solmuja yhteenä: " + ruudukko.getYhteensa() + "\n");
-        
-        Dijkstra dijkstra = new Dijkstra(ruudukko);
+
+        System.out.println("Ruudukossa solmuja yhteensä: " + (ruudukko.getKorkeus() + 1) * (ruudukko.getLeveys() + 1));
+        System.out.println("Ruudukossa kuljettavia solmuja yhteenä: " + ruudukko.getYhteensa() + "\n");
+
         Astar astar = new Astar(ruudukko);
-        
-        
+
         double aloitusaikaA = System.currentTimeMillis();
         int reittiA = astar.laskeReitti();
         double lopetusaikaA = System.currentTimeMillis();
         double aikaA = lopetusaikaA - aloitusaikaA;
-        
+
         System.out.println("A*:lla aikaa kului: " + aikaA + " millisekuntia.");
-        System.out.println("A*:lla polkua haettaessa tutkittiin yhteensä "+astar.getMaara() + " solmua.");
-        System.out.println("solmuja lyhimpään polkuun kuuluu " + reittiA + " kappaletta." );
-        
+        System.out.println("A*:lla polkua haettaessa tutkittiin yhteensä " + astar.getMaara() + " solmua.");
+        System.out.println("solmuja lyhimpään polkuun kuuluu " + reittiA + " kappaletta.");
+
         System.out.println("------------------------------------------------");
-        
-        
+
+        Ruudukko ruudukko1 = new Ruudukko();
+        ruudukko1.alustaTiedostosta(tiedosto);
+        Dijkstra dijkstra = new Dijkstra(ruudukko1);
+
         double aloitusaika = System.currentTimeMillis();
-        int reittiD =  dijkstra.laskeReitti();
+        int reittiD = dijkstra.laskeReitti();
         double lopetusaika = System.currentTimeMillis();
         double aika = lopetusaika - aloitusaika;
-       
+
         System.out.println("Dijkstralla aikaa kului: " + aika + " millisekuntia.");
         System.out.println("solmuja lyhimpään polkuun kuuluu " + reittiD + " kappaletta.");
-        
-        
-
 
     }
 

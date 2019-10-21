@@ -65,6 +65,7 @@ public class Ruudukko {
                 if (arvo == 'u') {
                     yhteensa++;
                     solmu.setEtaisyys(0);
+                    solmu.setMatkaAlkuun(0);
                     setAlku(solmu);
                 }
 

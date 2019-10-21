@@ -74,7 +74,7 @@ public class Astar {
     }
 
     public void updateSolmu(Solmu kasiteltava, Solmu naapuri) {
-        if (!suljettu.contains(naapuri) && naapuri.getKuljettava()) {
+       if (!suljettu.contains(naapuri) && naapuri.getKuljettava()) {
             int matkaAlkuun = kasiteltava.getMatkaAlkuun() + 1;
 
             if (!avoin.contains(naapuri) || matkaAlkuun < kasiteltava.getMatkaAlkuun()) {

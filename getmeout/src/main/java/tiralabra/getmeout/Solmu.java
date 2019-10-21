@@ -32,7 +32,7 @@ public class Solmu {
         this.paikka = 0;
         this.maali = false;
         this.etaisyys = Integer.MAX_VALUE;
-        this.etaisyysAlkuun = 0;
+        this.etaisyysAlkuun = Integer.MAX_VALUE;
 
     }
 

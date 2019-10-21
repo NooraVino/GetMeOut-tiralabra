@@ -17,7 +17,7 @@ public class Heuristic {
         int arvoX=Math.abs(s.getX()-maali.getX());
         int arvoY=Math.abs(s.getY()-maali.getY());
         
-        return arvoX+arvoY+1;
+        return arvoX+arvoY;
     }
 } 
 

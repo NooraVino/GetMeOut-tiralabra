@@ -1,8 +1,9 @@
 Testausdokumentti
 
-Kaikki projektin osat on testattu yksikkötesteillä.
-Käytössä on JUnit-testaus.
+Projekti on testattu yksikkötesteillä. Käytössä on JUnit-testaus. Testit suuoritetaan NetBeanssissa painamalla projektin nimen kohdalta ja valitsemalla "Test". Testin voi suorittaa myös painamalla Alt F6. Konsolissa testiti voi suorittaa komennolla "mvn test".
 
-Testit suorotetaan painamalla projektin nimen kohdalta ja valitsemalla Test. Testin voi suoritta myös painamalla Alt + F6
+Testauksen apuna on Jacoco jonka avulla voidaan tarkastella testien rivi- ja haarautumakattavuutta. Jacocon voi suorittaa komentoriviltä komennolla "mvn test jacoco:report". Koodin laatua ja luettavuutta varten mukana on myös Checkstyle (+ jxr). Tarkastuksen voi suorittaa komennolla "mvn jxr:jxr checkstyle:checkstyle".
 
-Suorituskykytestauksella on selvitetty algoritmien ja tietorakenteiden nopeutta. Toteutus Javan omalla System.currentTimeMillis() metodilla. Aika suorituksen alussa tallennetaan ja lopuksi se vähennetään loppuhetken ajasta. 
+Suorituskykytestauksella on selvitetty algoritmien ja tietorakenteiden nopeutta. Suorituskykyä on testattu mm Javan omalla Systems.currentTimeMillis() metodilla. Aika suorituksen alussa ja lopussa tallennetaan ja erotuksesta saadaan suorituksen kesto.
+
+
