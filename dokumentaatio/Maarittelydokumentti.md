@@ -1,4 +1,4 @@
-### 1. Määrittelydokumentti
+﻿### 1. Määrittelydokumentti
 
 Harjoitustyönä vertailen miten Dikstra ja A* eroavat toisistaan kun algoritmin on tarkoitus löytää
 lyhin reitti kartalla kahden pisteen välillä. Työssä tarkastelen mm sitä miten kartan koko vaikuttaa tulokseen
@@ -15,7 +15,7 @@ aliohjelmat kaarten löysäämiseksi (päivitys ja alustus).
 A* tarvitsee minimikeon lisäksi avukseen heuristiikkafunktion joka tässä tapauksessa voi olla ns
 Manhattanetäisyys sillä liike tapahtuu vain neljään (ei kahdeksaan suuntaan). A* voi
 heuristiikkafunktion avulla löytää lyhimmän reitin nopeammin kuin Dijkstra mutta huomioitavaa on
-että algoritmi löytää varmasti lyhimmän polun jvain os loppuosan etäisyysarvio ei ole millekään
+että algoritmi löytää varmasti lyhimmän polun vain jos loppuosan etäisyysarvio ei ole millekään
 solmulle suurempi kuin solmun todellinen etäisyys maalisolmusta ja heuristiikkafunktio
 on monotoninen.
 
@@ -23,5 +23,5 @@ Sekä Dijkstran että A*:n toivottu aikavaativuus O((|E|+|V|) log|V|) tilavaativ
 
 ##### Lähteet:
 Tietorakenteet ja Algoritmit luentomoniste 2017 (Jyrki Kivinen)
-
 A*-reitinhaku -Tietorakenteiden harjoitustyö (www.harbu.org/uploads/tiralabra/)
+Tietorakenteiden harjoitustyö, tapio2075. Vuosi 2012. (https://github.com/tapio2705/tira/blob/master/Projekti/src/Main.java)

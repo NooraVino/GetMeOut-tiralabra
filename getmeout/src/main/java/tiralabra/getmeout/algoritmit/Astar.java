@@ -43,8 +43,8 @@ public class Astar {
         while (!avoin.isEmpty()) {
             Solmu kasiteltava = avoin.poistaMinimi();
 
-            if (kasiteltava.equals(ruudukko.getMaali())) {
-                return lyhinReitti(ruudukko.getMaali());
+            if (kasiteltava.getMaali()) {
+                return lyhinReitti(kasiteltava);
             }
 
             if (kasiteltava.getNaapuriYla().getY() >= 0) {
@@ -83,7 +83,7 @@ public class Astar {
         }
     }
 
-    private int lyhinReitti(Solmu n) {
+    public int lyhinReitti(Solmu n) {
         if (n.getEdeltaja() != null) {
             polku.lisaa(n);
             lyhinReitti(n.getEdeltaja());

@@ -97,10 +97,10 @@ public class Dijkstra {
     /**
      * Laskee lyhimmän reitin pituuden maalisolmusta lähtösolmuun.
      *
-     * @param maali
+     * @param solmu
      * @return
      */
-    private int lyhinReitti(Solmu solmu) {
+    public int lyhinReitti(Solmu solmu) {
         if (solmu.getEdeltaja() != null) {
             polku.lisaa(solmu);
             lyhinReitti(solmu.getEdeltaja());
