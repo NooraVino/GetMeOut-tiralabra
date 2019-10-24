@@ -15,13 +15,13 @@ Alla on muutamia esimerkkejä syötteiden koosta suhteessa lyhimmän reitin löy
 
 |      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
 |---|---|----|---|---|---|
-|Dijkstra|512x512|262144||850|114|
-|Astar|512x512|262144|25445|850|27|
+|Dijkstra|512x512|262144|850||114|
+|Astar|512x512|262144|850|25445|27|
 
 
 |      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
 |---|---|----|---|---|---|
-|Dijkstra|512x224||713||69|
+|Dijkstra|512x224|101312|713||69|
 |Astar|512x224|101312|727|59223|62|
 
 |      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
