@@ -13,7 +13,7 @@ The main point of this course is to try those things we learn in course Datastru
 
 
 ### Käyttöohje:
-Projektiin ei ole tehty sen ihmeempää käyttöliittymää. Ohjelma käynnistetään NetBenanssisa painamalla F6. Ohjelma tulostaa tiedot ruudukon koosta, kuljattavien solmujen määristä sekä tiedot siitä kuinka kauan kummankin algoritmin suoritus kesti ja kuinka pitkä on lyhin reitti. Ohjelmalle on annettavissa kuusi(6) eri kokoista ruudukkoa. Ruudukot annetaan Main metodissa tiedostoparametrina ja käytettävien tekstitiedostojen nimet on ilmoitettu kommentissa. 
+Projektiin ei ole tehty sen ihmeempää käyttöliittymää. Ohjelma käynnistetään NetBenanssisa painamalla F6 tai komentoriviltä komenolla java -jar getmeout.jar. Ohjelma tulostaa tiedot ruudukon koosta, kuljattavien solmujen määristä sekä tiedot siitä kuinka kauan kummankin algoritmin suoritus kesti ja kuinka pitkä on lyhin reitti. Ohjelmalle on annettavissa kuusi(6) eri kokoista ruudukkoa. Ruudukot annetaan Main metodissa tiedostoparametrina ja käytettävien tekstitiedostojen nimet on ilmoitettu kommentissa. 
 
 
 
