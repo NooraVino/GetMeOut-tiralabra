@@ -10,7 +10,7 @@ Testausta on tehty sekä omille tietorakenteille Keko, Lista ja Solmulista että
 
 Suorituskykytestauksessa huomataan että pienillä syötteillä molemmat algoritmit löytävät samta lyhimmät reitit suurinpiirtein samassa ajassa. Kuitenkin isommilla syötteillä Astarin edut näkyvät ja reitti löytyy nopeammin. 
 
-Alla on muutamia esimerkkejä syötteiden koon ja lyhimmän reitin suhteen. Oman toteutukseni Astar ei kuitenkaan toimi täysin oiken vaan lyhimmän reitin pituus alkaa Astarin kohdalla nousta kun syöte on isompi. Tästä huolimatta Astar toimii yli 100000 mitaisilla syötteillä nopeasti ja nopeusero on merkittävä. Tämän enempää ei kuitenkaan ollut järkeä tehdä vertailuja kun algoritmi ei toimi kaikilta osin niin kuin pitäisi.
+Alla on muutamia esimerkkejä syötteiden koon ja lyhimmän reitin suhteen. Oman toteutukseni Astar ei kuitenkaan toimi täysin oiken vaan lyhimmän reitin pituus nousee joillain syötteillä. Tästä huolimatta Astar toimii yli 100000 mitaisilla syötteillä nopeasti ja nopeusero on merkittävä. Tämän enempää ei kuitenkaan ollut järkeä tehdä vertailuja kun algoritmi ei toimi kaikilta osin niin kuin pitäisi.
 
 
 |      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
