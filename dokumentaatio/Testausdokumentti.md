@@ -1,4 +1,4 @@
-﻿Testausdokumentti
+### Testausdokumentti
 
 Projekti on testattu yksikkötesteillä. Käytössä on JUnit-testaus. Testit suuoritetaan NetBeanssissa painamalla projektin nimen kohdalta ja valitsemalla "Test". Testin voi suorittaa myös painamalla Alt F6. Konsolissa testit voi suorittaa komennolla "mvn test".
 
@@ -14,15 +14,13 @@ Suorituskykytestauksessa huomataan että pienillä syötteillä molemmat algorit
 Alla on muutamia esimerkkejä syötteiden koosta suhteessa lyhimmän reitin löytymiseen. Oman toteutukseni Astar ei kuitenkaan toimi täysin oiken vaan lyhimmän reitin pituus alkaa Astarin kohdalla nousta kun syöte on isompi. Kuitenkin Astar toimii yli 100000 mitaisilla syötteillä nopeasti ja nopeuero kasvaa nopeasti. Tämän enempää ei kuitenkaan ollut järkeä tehdä vertailuja kun algoritmi ei toimi juuri niin kuin pitäisi.
 
 
-| Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
-|---|---|----|---|---|
+|      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
+|---|---|----|---|---|---|
+|Dijkstra|
+|Astar|
 
 
-Ruudukon koko
-Kuljettavia solmuja
-Lyhin reitti
-Kuljettuja solmuja
-Aika/ms
+
 Dijkstra
 512x224
 101312
