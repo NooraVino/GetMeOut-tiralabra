@@ -15,8 +15,8 @@ Alla on muutamia esimerkkejä syötteiden koon ja lyhimmän reitin suhteen. Oman
 
 |      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
 |---|---|----|---|---|---|
-|Dijkstra|512x512|262144|850||95|
-|Astar|512x512|235892|850|25445|30|
+|Dijkstra|512x512|262144|1006||95|
+|Astar|512x512|235892|850|1006|30|
 
 
 
