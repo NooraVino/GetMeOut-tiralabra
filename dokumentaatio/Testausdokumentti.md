@@ -8,6 +8,54 @@ Suorituskykytestauksella on selvitetty algoritmien ja tietorakenteiden nopeutta.
 
 Testausta on tehty sekä omille tietorakenteille Keko, Lista ja Solmulista että myös omille Algoritmeille. Yksikkötestausta tehdessä huomasin, että Astar-algoritmi ei toimi ilman maalia. 
 
-Suorituskykytestauksessa huomataan että pienillä syötteillä molemmat algoritmit löytävät samta lyhimmät reitit suurinpiirtein samassa ajassa. Kuitenkin isommilla syötteillä Astarin edut näkyvät ja reitti löytyy paljon nopeammin. 
+Suorituskykytestauksessa huomataan että pienillä syötteillä molemmat algoritmit löytävät samta lyhimmät reitit suurinpiirtein samassa ajassa. Kuitenkin isommilla syötteillä Astarin edut näkyvät ja reitti löytyy nopeammin. 
+
+
+
+Alla on muutamia esimerkkejä syötteiden koosta suhteessa lyhimmän reitin löytymiseen. Oman toteutukseni Astar ei kuitenkaan toimi täysin oiken vaan lyhimmän reitin pituus alkaa Astarin kohdalla nousta kun syöte on isompi. Kuitenkin Astar toimii yli 100000 mitaisilla syötteillä nopeasti ja nopeuero kasvaa nopeasti. Tämän enempää ei kuitenkaan ollut järkeä tehdä vertailuja kun algoritmi ei toimi juuri niin kuin pitäisi.
+
+
+
+
+
+Ruudukon koko
+Kuljettavia solmuja
+Lyhin reitti
+Kuljettuja solmuja
+Aika/ms
+Dijkstra
+512x224
+101312
+713
+
+69
+Astar
+512x224
+101312
+727
+59223
+62
+
+
+
+Ruudukon koko
+Kuljettavia solmuja
+Lyhin reitti
+Kuljettuja solmuja
+Aika/ms
+Dijkstra
+5x34
+105
+38
+89
+0
+Astar
+5x34
+105
+38
+89
+1
+
+
 
 
