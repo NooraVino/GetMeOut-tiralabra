@@ -1,4 +1,4 @@
-﻿Toteutusdokumentti
+###Toteutusdokumentti
 
 Molemmat algoritmit hyödyntävät saamaa metodia “alustaTiedostosta()” joka saa parametrinaan (tekstitiedoston). Tekstitiedosto tulkitaan kaksiulotteisena taulukkona. Jokainen tiedoston rivi luetaan yksi kerrallaan ja tallennetaan omaa listatoteutusta apuna käyttäen. Tiedoston jokainen merkki tallennetaan omaksi solmukseen ja solmujen kuljettavuus sekä etäisyysarviot alustetaan. Myös lähtösolmu ja maalisolmu erotellaan.Kun kaikki solmut on alustettu molemmat algoritmit toteuttavat omat laskeReitti-metodin.  
 
@@ -6,11 +6,10 @@ Dijkstran algoritmi käyttää apunaan minimikekoa josta pystytään tehokkaasti
 
 Astar algoritmi toimii hyvin saman tapaisesti. Siinäkin aluksi kekoon lisätään vain aloitussolmu ja keosta poistetaan aina pienin kunnes keko on tyhjä. Astar eroaa kuitenkin siinä, että siinä kaikkia solmuja ei käydä läpi vaan heuristiikkafunktion avulla lasketaan etäisyysarviota jonka avulla yritetään koko ajan kohti maalisolmua ja sillä tavoin pyrkiä siihen, ettei kaikkia solmuja tarvitsisi käydä läpi. Siinä tapauksessa että reitillä ei ole kohtuuttomasti esteitä niin Astarin pitäisi löytää reitti isoilla taulukoilla selvästi noepammin kuin Dijkstra.
 
-
-Molemmat Algoritmit kutsuvat lopuksi metodia laskeReitti jonka avulla saadaan tulostettua hyvin reitti parametrina annetusta maalisolmusta lähtösolmuun hyödyntäen omaa listaToteutusta sekä Solmun edeltäjätietoa. 
+Molemmat algoritmit kutsuvat lopuksi metodia laskeReitti jonka avulla saadaan tulostettua hyvin reitti parametrina annetusta maalisolmusta lähtösolmuun hyödyntäen omaa listaToteutusta sekä Solmun edeltäjätietoa. 
 
 Main metodi tulostaa näytölle koko ruudukon koon sekä kuljettavien solmujen määrän. Tämän lisäksi saadaan tieto molempien algorimien laskemasta lyhimmästä polusta sekä Astarin kohdalla myös tieto siitä, kuinka monta solmua käsiteltiin.
 Javan omalla CurrentTimeMillis()-metodilla saadaan laskettua molempien algoritmien suoritusaika.
 
-Astar algoritmi ei toimi oikein vaan alkaa isommilla syötteillä kasvattaa lyhimmän reitin pituutta ja tutkittavien solmujen määrää vaikka muuten toimiikin siihen suuntai kuin pitääkin, eli pienentää reilusti tutkittavien solmujen määrää ja sitä kautta lyhentää suoritusaikaa. En ehtinyt tätä asiaa ratkaista. 
+Astar algoritmi ei toimi oikein vaan kasvattaa joillain syötteillä reitin pituutta ja tutkittavien solmujen määrää vaikka muuten toimiikin siihen suuntai kuin pitääkin, eli pienentää reilusti tutkittavien solmujen määrää ja sitä kautta lyhentää suoritusaikaa. En ehtinyt tätä asiaa ratkaista. Todella tieheäesteisellä syötteellä 512x512 Astar häviää suoritusajassa Dijkstralle.
 
