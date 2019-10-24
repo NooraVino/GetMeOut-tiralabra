@@ -13,34 +13,27 @@ Suorituskykytestauksessa huomataan että pienillä syötteillä molemmat algorit
 
 Alla on muutamia esimerkkejä syötteiden koosta suhteessa lyhimmän reitin löytymiseen. Oman toteutukseni Astar ei kuitenkaan toimi täysin oiken vaan lyhimmän reitin pituus alkaa Astarin kohdalla nousta kun syöte on isompi. Kuitenkin Astar toimii yli 100000 mitaisilla syötteillä nopeasti ja nopeuero kasvaa nopeasti. Tämän enempää ei kuitenkaan ollut järkeä tehdä vertailuja kun algoritmi ei toimi juuri niin kuin pitäisi.
 
+|      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
+|---|---|----|---|---|---|
+|Dijkstra|512x512|262144||850|114|
+|Astar|512x512|262144|25445|850|27|
+
 
 |      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
 |---|---|----|---|---|---|
-|Dijkstra|512x224|101312|713||69|
+|Dijkstra|512x224||713||69|
 |Astar|512x224|101312|727|59223|62|
 
+|      | Ruudukon koko | Kuljettavia Solmuja | Lyhin reitti| Kuljettuja Solmuja| Aika/ms
+|---|---|----|---|---|---|
+|Dijkstra|5x34|105|38||0|
+|Astar|5x34|105|38|89|1|
 
 
 
 
 
-Ruudukon koko
-Kuljettavia solmuja
-Lyhin reitti
-Kuljettuja solmuja
-Aika/ms
-Dijkstra
-5x34
-105
-38
-89
-0
-Astar
-5x34
-105
-38
-89
-1
+
 
 
 
