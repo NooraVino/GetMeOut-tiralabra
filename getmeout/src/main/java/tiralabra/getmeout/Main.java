@@ -20,7 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        File tiedosto = new File("testi512x512hankala.txt"); //testi6x6, testi5x34, testi22x512, testi512x224, testi512x512
+        File tiedosto = new File("testi512x512hankala.txt"); //testi6x6, testi5x34, testi22x512, testi512x224, testi512x512, testi512x512hankala
         Ruudukko ruudukko = new Ruudukko();
         ruudukko.alustaTiedostosta(tiedosto);
 
