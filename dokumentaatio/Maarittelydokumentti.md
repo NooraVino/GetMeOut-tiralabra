@@ -24,4 +24,5 @@ Sekä Dijkstran että A*:n toivottu aikavaativuus O((|E|+|V|) log|V|) tilavaativ
 ##### Lähteet:
 Tietorakenteet ja Algoritmit luentomoniste 2017 (Jyrki Kivinen)
 A*-reitinhaku -Tietorakenteiden harjoitustyö (www.harbu.org/uploads/tiralabra/)
-Tietorakenteiden harjoitustyö, tapio2075. Vuosi 2012. (https://github.com/tapio2705/tira/blob/master/Projekti/src/Main.java)
+Tietorakenteiden harjoitustyö, tapio2075. Vuosi 2012 (https://github.com/tapio2705/tira/blob/master/Projekti/src/Main.java)
+Kartat (www.movingai.com/benchmarks/grids.html)
