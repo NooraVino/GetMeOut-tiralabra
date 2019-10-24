@@ -11,6 +11,12 @@ The main point of this course is to try those things we learn in course Datastru
 
 [Määrittelydokumentti](https://github.com/NooraVino/GetMeOut-tiralabra/blob/master/dokumentaatio/Maarittelydokumentti.md)
 
+
+### Käyttöohje:
+Projektiin ei ole tehty sen ihmeempää käyttöliittymää. Ohjelma käynnistetään NetBenanssisa painamalla F6. Ohjelma tulostaa tiedot ruudukon koosta, kuljattavien solmujen määristä sekä tiedot siitä kuinka kauan kummankin algoritmin suoritus kesti ja kuinka pitkä on lyhin reitti. Ohjelmalle on annettavissa kuusi(6) eri kokoista ruudukkoa. Ruudukot annetaan Main metodissa tiedostoparametrina ja käytettävien tekstitiedostojen nimet on ilmoitettu kommentissa. 
+
+
+
 [viikkoraportti 6](https://github.com/NooraVino/GetMeOut-tiralabra/blob/master/dokumentaatio/viikkoraportti6.md)
 
 [viikkoraportti 5](https://github.com/NooraVino/GetMeOut-tiralabra/blob/master/dokumentaatio/viikkoraportti5.md)
